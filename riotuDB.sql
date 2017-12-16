@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 16, 2017 at 05:33 PM
+-- Host: localhost
+-- Generation Time: Dec 16, 2017 at 05:55 PM
 -- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `riotudb`
+-- Database: `riotuDB`
 --
 
 -- --------------------------------------------------------
@@ -140,9 +140,16 @@ INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_d
 
 CREATE TABLE `newsletter` (
   `newsletter_id` int(11) NOT NULL,
-  `newsletter_date` date NOT NULL,
+  `newsletter_date` varchar(20) NOT NULL,
   `newsletter_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`newsletter_id`, `newsletter_date`, `newsletter_link`) VALUES
+(1, 'APRIL 2017', 'resources/newsletter1.pdf');
 
 -- --------------------------------------------------------
 
@@ -187,7 +194,7 @@ CREATE TABLE `publications` (
   `publication_name` varchar(250) NOT NULL,
   `director` varchar(150) NOT NULL,
   `reference` varchar(100) DEFAULT NULL,
-  `date` date NOT NULL,
+  `date` varchar(20) NOT NULL,
   `website` varchar(100) NOT NULL,
   `publication_type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -197,31 +204,31 @@ CREATE TABLE `publications` (
 --
 
 INSERT INTO `publications` (`publication_id`, `publication_name`, `director`, `reference`, `date`, `website`, `publication_type`) VALUES
-(1, 'Robots and Sensor Clouds', 'Anis Koubaa, Elhadi Shakshuki, ', 'Studies in Systems, Decision and Control', '2016-01-01', 'Springer', 'book'),
-(3, 'Robot Operating System (ROS): The Complete Reference (Volume 2)', 'Anis Koubaa, ', '', '2016-02-01', 'Springer', 'book'),
-(4, 'Design and performance analysis of global path planning techniques for autonomous mobile robots in grid environments', 'Imen Chaari, Anis Koubaa, Hachemi Bennaceur, Adel Ammar, Maram Alajlan, Habib Youssef, ', 'International Journal of Advanced Robotic Systems, Vol.(0), Issue (0),', '2017-01-01', 'Other, impact factor: 0.615, ISI', 'journal'),
-(5, 'MyBot: Cloud-Based Service Robot using Service-Oriented Architecture', 'Anis Koubaa, Mohamed-Foued Sriti, Yasir Javed, Maram Alajlan, Basit Qureshi, Fatma Ellouze, Abdelrahman Mahmoud, ', 'Robotic Journal, Vol.(0), Issue (0),', '2017-01-01', 'Robotic Journal, Vol.(0), Issue (0),', 'journal'),
-(6, 'Dual Mode for Vehicular Platoon Safety: Simulation and Formal Verification', 'Oussama Karoui, Mohamed Khalgui, Anis Koubaa, Emna Guerfala, Zhiwu Li, Eduardo Tovard, ', 'Information Sciences, Vol.(0), Issue (0),', '2017-03-01', 'Elsevier, impact factor: 3.364, SCOPUS', 'journal'),
-(7, 'Move and Improve: a Market-Based Mechanism for the Multiple Depot Multiple Travelling Salesmen Problem', 'Anis Koubaa, Omar Cheikhrouhou, Hachemi Bennaceur, Mohamed-Foued Sriti, Yasir Javed, Adel Ammar, ', 'Journal of Intelligent & Robotic Systems, Vol.(85), Issue (0),', '2016-02-01', 'Springer, impact factor: 0.932, ISI', 'journal'),
-(8, 'Z-Monitor: A protocol analyzer for IEEE 802.15. 4-based low-power wireless networks', 'Stefano Tennina, Olfa Gaddour, Anis Koubaa, Fernando Royo, Mario Alves, Mohamed Abid, ', 'Computer Networks, Vol.(95), Issue (0),', '2016-02-01', 'Elsevier, impact factor: 1.446, ISI', 'journal'),
-(9, 'FL-MTSP: a fuzzy logic approach to solve the multi-objective multiple traveling salesman problem for multi-robot systems', 'Sahar Trigui, Omar Cheikhrouhou, Anis Koubaa, Uthman Baroudi, Habib Youssef,', 'Soft Computing, Vol.(0), Issue (0),', '2016-08-01', 'Springer, impact factor: 1.63, ISI', 'journal'),
-(10, 'Relaxed Dijkstra and A* with linear complexity for robot path planning problems in large-scale grid environments', 'Adel Ammar, Hachemi Bennaceur, Imen Chaari, Anis Koubaa, Maram Alajlan,', 'Soft Computing, Vol.(20), Issue (10)', '2016-10-01', 'Springer, impact factor: 1.63, ISI', 'journal'),
-(11, 'Cyber-physical systems clouds: A survey', 'Rihab Chaari, Fatma Ellouze, Anis Koubaa, Basit Qureshi, Nuno Pereira, Habib Youssef, Eduardo Tovar, ', 'Computer Networks, Vol.(108), Issue (1),', '2016-10-01', 'Elsevier, impact factor: 1.256, ISI', 'journal'),
-(12, 'GLOBAL ROBOT PATH PLANNING USING GA FOR LARGE GRID MAPS: MODELLING, PERFORMANCE AND EXPERIMENTATION', 'Maram Alajlan, Imen Chaari, Anis Koubaa, Hachemi Bennaceur, Adel Ammar, Habib Youssef, ', 'International Journal of Robotics and Automation, Vol.(31), Issue (6),', '2016-12-01', 'Springer, impact factor: 0, SCOPUS', 'journal'),
-(13, 'Reliable link quality estimation in low-power wireless networks and its impact on tree-routing', 'Nouha Baccour, Anis Koubaa, Habib Youssef, Mario Alves, ', 'Ad Hoc Networks, Vol.(27), Issue (0),', '2015-04-01', 'Elsevier, impact factor: 1.66, ISI', 'journal'),
-(14, 'Quality-of-service aware routing for static and mobile ipv6-based low-power and lossy sensor networks using RPL', 'Olfa Gaddour, Anis Koubaa, Mohamed Abid, ', 'Ad Hoc Networks, Vol.(33), Issue (0).', '2015-10-01', 'Elsevier, impact factor: 1.66, ISI', 'journal'),
-(15, 'ROS As a Service: Web Services for Robot Operating System', 'Anis Koubaa,', 'Journal of Software Engineering for Robotics, Vol.(6), Issue (1)', '2015-12-01', 'University of Bergamo	Universita degli Studi di Bergamo, impact factor: 0, NOT INDEXED', 'journal'),
-(16, 'Reliable and Fast Hand-Offs in Low-Power Wireless Networks', 'Hossein Fotouhi, Mario Alves, Marco Zuniga, Anis Koubaa, ', 'IEEE Transactions on Mobile Computing, Vol.(11), Issue (13),', '2014-02-01', 'IEEE, impact factor: 2.543, ISI', 'journal'),
-(17, 'RPL in a nutshell: A survey', 'Olfa Gaddour, Anis Koubaa,', 'Computer Networks, Vol.(14), Issue (56),', '2012-08-01', 'Springer, impact factor: 1.256, ISI', 'journal'),
-(18, 'A Service-Oriented Cloud-Based Management System for the Internet-of-Drones', 'Anis Koubaa, Basit Qureshi, Mohamed-Foued Sriti, Yasir Javed, Eduardo Tovar, ', '17th International Conference on Autonomous Robot Systems and Competitions (ICARSC 2017).', '2017-01-01', 'IEEE', 'conference'),
-(19, 'On Power Consumption Profiles for Data Intensive Workloads in Virtualized Hadoop Clusters', 'Basit Qureshi, Sultan Alwehaibi, Anis Koubaa, ', '2017 IEEE International Conference on Computer Communications (INFOCOM), ', '2017-03-01', 'IEEE\r\n', 'conference'),
-(20, 'Performance of a Low Cost Hadoop Cluster for Image Analysis in Cloud Robotics Environment', 'Basit Qureshi, Yasir Javed, Anis Koubaa, Mohamed-Foued Sriti, Maram Alajlan, ', 'Procedia Computer Science,', '2017-12-01', 'Elsevier', 'conference'),
+(1, 'Robots and Sensor Clouds', 'Anis Koubaa, Elhadi Shakshuki, ', 'Studies in Systems, Decision and Control', 'January 2016', 'Springer', 'book'),
+(3, 'Robot Operating System (ROS): The Complete Reference (Volume 2)', 'Anis Koubaa, ', '', 'February 2016', 'Springer', 'book'),
+(4, 'Design and performance analysis of global path planning techniques for autonomous mobile robots in grid environments', 'Imen Chaari, Anis Koubaa, Hachemi Bennaceur, Adel Ammar, Maram Alajlan, Habib Youssef, ', 'International Journal of Advanced Robotic Systems, Vol.(0), Issue (0),', 'January 2017', 'Other, impact factor: 0.615, ISI', 'journal'),
+(5, 'MyBot: Cloud-Based Service Robot using Service-Oriented Architecture', 'Anis Koubaa, Mohamed-Foued Sriti, Yasir Javed, Maram Alajlan, Basit Qureshi, Fatma Ellouze, Abdelrahman Mahmoud, ', 'Robotic Journal, Vol.(0), Issue (0),', 'January 2017', 'Robotic Journal, Vol.(0), Issue (0),', 'journal'),
+(6, 'Dual Mode for Vehicular Platoon Safety: Simulation and Formal Verification', 'Oussama Karoui, Mohamed Khalgui, Anis Koubaa, Emna Guerfala, Zhiwu Li, Eduardo Tovard, ', 'Information Sciences, Vol.(0), Issue (0),', 'March 2017', 'Elsevier, impact factor: 3.364, SCOPUS', 'journal'),
+(7, 'Move and Improve: a Market-Based Mechanism for the Multiple Depot Multiple Travelling Salesmen Problem', 'Anis Koubaa, Omar Cheikhrouhou, Hachemi Bennaceur, Mohamed-Foued Sriti, Yasir Javed, Adel Ammar, ', 'Journal of Intelligent & Robotic Systems, Vol.(85), Issue (0),', 'February 2016', 'Springer, impact factor: 0.932, ISI', 'journal'),
+(8, 'Z-Monitor: A protocol analyzer for IEEE 802.15. 4-based low-power wireless networks', 'Stefano Tennina, Olfa Gaddour, Anis Koubaa, Fernando Royo, Mario Alves, Mohamed Abid, ', 'Computer Networks, Vol.(95), Issue (0),', 'February 2016', 'Elsevier, impact factor: 1.446, ISI', 'journal'),
+(9, 'FL-MTSP: a fuzzy logic approach to solve the multi-objective multiple traveling salesman problem for multi-robot systems', 'Sahar Trigui, Omar Cheikhrouhou, Anis Koubaa, Uthman Baroudi, Habib Youssef,', 'Soft Computing, Vol.(0), Issue (0),', 'August 2016', 'Springer, impact factor: 1.63, ISI', 'journal'),
+(10, 'Relaxed Dijkstra and A* with linear complexity for robot path planning problems in large-scale grid environments', 'Adel Ammar, Hachemi Bennaceur, Imen Chaari, Anis Koubaa, Maram Alajlan,', 'Soft Computing, Vol.(20), Issue (10)', 'October 2016', 'Springer, impact factor: 1.63, ISI', 'journal'),
+(11, 'Cyber-physical systems clouds: A survey', 'Rihab Chaari, Fatma Ellouze, Anis Koubaa, Basit Qureshi, Nuno Pereira, Habib Youssef, Eduardo Tovar, ', 'Computer Networks, Vol.(108), Issue (1),', 'October 2016', 'Elsevier, impact factor: 1.256, ISI', 'journal'),
+(12, 'GLOBAL ROBOT PATH PLANNING USING GA FOR LARGE GRID MAPS: MODELLING, PERFORMANCE AND EXPERIMENTATION', 'Maram Alajlan, Imen Chaari, Anis Koubaa, Hachemi Bennaceur, Adel Ammar, Habib Youssef, ', 'International Journal of Robotics and Automation, Vol.(31), Issue (6),', 'December 2016', 'Springer, impact factor: 0, SCOPUS', 'journal'),
+(13, 'Reliable link quality estimation in low-power wireless networks and its impact on tree-routing', 'Nouha Baccour, Anis Koubaa, Habib Youssef, Mario Alves, ', 'Ad Hoc Networks, Vol.(27), Issue (0),', 'April 2015', 'Elsevier, impact factor: 1.66, ISI', 'journal'),
+(14, 'Quality-of-service aware routing for static and mobile ipv6-based low-power and lossy sensor networks using RPL', 'Olfa Gaddour, Anis Koubaa, Mohamed Abid, ', 'Ad Hoc Networks, Vol.(33), Issue (0).', 'October 2015', 'Elsevier, impact factor: 1.66, ISI', 'journal'),
+(15, 'ROS As a Service: Web Services for Robot Operating System', 'Anis Koubaa,', 'Journal of Software Engineering for Robotics, Vol.(6), Issue (1)', 'December 2015', 'University of Bergamo	Universita degli Studi di Bergamo, impact factor: 0, NOT INDEXED', 'journal'),
+(16, 'Reliable and Fast Hand-Offs in Low-Power Wireless Networks', 'Hossein Fotouhi, Mario Alves, Marco Zuniga, Anis Koubaa, ', 'IEEE Transactions on Mobile Computing, Vol.(11), Issue (13),', 'February 2014', 'IEEE, impact factor: 2.543, ISI', 'journal'),
+(17, 'RPL in a nutshell: A survey', 'Olfa Gaddour, Anis Koubaa,', 'Computer Networks, Vol.(14), Issue (56),', 'August 2012', 'Springer, impact factor: 1.256, ISI', 'journal'),
+(18, 'A Service-Oriented Cloud-Based Management System for the Internet-of-Drones', 'Anis Koubaa, Basit Qureshi, Mohamed-Foued Sriti, Yasir Javed, Eduardo Tovar, ', '17th International Conference on Autonomous Robot Systems and Competitions (ICARSC 2017).', 'January 2017', 'IEEE', 'conference'),
+(19, 'On Power Consumption Profiles for Data Intensive Workloads in Virtualized Hadoop Clusters', 'Basit Qureshi, Sultan Alwehaibi, Anis Koubaa, ', '2017 IEEE International Conference on Computer Communications (INFOCOM), ', 'May 2017', 'IEEE\r\n', 'conference'),
+(20, 'Performance of a Low Cost Hadoop Cluster for Image Analysis in Cloud Robotics Environment', 'Basit Qureshi, Yasir Javed, Anis Koubaa, Mohamed-Foued Sriti, Maram Alajlan, ', 'Procedia Computer Science,', 'December 2017', 'Elsevier', 'conference'),
 (21, 'Turtlebot at Office: A Service-Oriented Software Architecture for Personal Assistant Robots Using ROS', 'Anis Koubaa, Mohamed-Foued Sriti, Yasir Javed, Maram Alajlan, Basit Qureshi, Fatma Ellouze, Abdelrahman Mahmoud, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', '2016-03-01', 'IEEE', 'conference'),
-(22, 'Analytical Hierarchy Process based Multi-objective Multiple Traveling Salesman Problem', 'Omar Cheikhrouhou, Anis Koubaa, Anis Zaard, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', '2016-03-01', 'IEEE', 'conference'),
-(23, 'A Clustering Market-Based Approach for Multi-robot Emergency Response Applications', 'Sahar Trigui, Anis Koubaa, Omar Cheikhrouhou, Basit Qureshi,, Habib Youssef, ', '2016 International Conference on Autonomous Robot Systems and Competitions (ICARSC),', '2016-03-01', 'IEEE', 'conference'),
-(24, 'ROS Web Services: A Tutorial', 'Fatma Ellouze, Anis Koubaa, Habib Youssef, ', 'Robot Operating System (ROS),', '2016-02-01', 'Springer', 'book_chapter'),
-(25, 'Writing Global Path Planners Plugins in ROS: A Tutorial', 'Maram Alajlan, Anis Koubaa, ', 'Robot Operating System (ROS),', '2016-02-01', 'Springer', 'book_chapter'),
-(26, 'COROS: a multi-agent software architecture for cooperative and autonomous service robots', 'Anis Koubaa, Mohamed-Foued Sriti, Hachemi Bennaceur, Adel Ammar, Yasir Javed, Maram Alajlan, Nada Al-Elaiwi, Mohamed Tounsi, Elhadi Shakshuki, ', 'Cooperative Robots and Sensor Networks 2015', '2015-05-01', 'Springer', 'book_chapter');
+(22, 'Analytical Hierarchy Process based Multi-objective Multiple Traveling Salesman Problem', 'Omar Cheikhrouhou, Anis Koubaa, Anis Zaard, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', 'May 2016', 'IEEE', 'conference'),
+(23, 'A Clustering Market-Based Approach for Multi-robot Emergency Response Applications', 'Sahar Trigui, Anis Koubaa, Omar Cheikhrouhou, Basit Qureshi,, Habib Youssef, ', '2016 International Conference on Autonomous Robot Systems and Competitions (ICARSC),', 'May 2016', 'IEEE', 'conference'),
+(24, 'ROS Web Services: A Tutorial', 'Fatma Ellouze, Anis Koubaa, Habib Youssef, ', 'Robot Operating System (ROS),', 'February 2016', 'Springer', 'book_chapter'),
+(25, 'Writing Global Path Planners Plugins in ROS: A Tutorial', 'Maram Alajlan, Anis Koubaa, ', 'Robot Operating System (ROS),', 'February 2016', 'Springer', 'book_chapter'),
+(26, 'COROS: a multi-agent software architecture for cooperative and autonomous service robots', 'Anis Koubaa, Mohamed-Foued Sriti, Hachemi Bennaceur, Adel Ammar, Yasir Javed, Maram Alajlan, Nada Al-Elaiwi, Mohamed Tounsi, Elhadi Shakshuki, ', 'Cooperative Robots and Sensor Networks 2015', 'May 2015', 'Springer', 'book_chapter');
 
 -- --------------------------------------------------------
 
@@ -353,7 +360,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `newsletter_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `newsletter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `person`
