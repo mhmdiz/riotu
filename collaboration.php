@@ -19,13 +19,16 @@
 <!-- WRAPPER -->
 <div id="wrapper">
 <?php
+    include 'include/dbconfig.php';
+    ?>
+    <?php
     include_once 'include/nav_bar.php';
     ?>
 <!-- END NAVBAR -->
 <!-- PAGE HEADER DEFAULT -->
 <div class="page-header">
 <div class="container">
-<h1 class="page-title pull-left">News</h1>
+<h1 class="page-title pull-left">Collaboration</h1>
 <ol class="breadcrumb link-accent">
 <li><a href="index.php">Home</a></li>
 
@@ -41,24 +44,31 @@
 
 <h2 class="section-heading">Collaboration</h2>
 <div class="row">
-<div class="col-lg-6">
-<a href='http://www.gaitech.hk'><img src="images/gaitech.png" width="70%"
-					class="image-responsive center"> </a>
+
+
+        <?php
+        $sql = "SELECT * FROM collaboration";
+        $result = $dbconn->query($sql);
+        $count=0;
+        if ($result->num_rows >= 1) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo'<div class="col-lg-6">';
+            echo "<a href='".$row["collaboration_link"]."'>";
+            echo "<img src='".$row["collaboration_picture"]."'";
+            echo 'width="40%" class="image-responsive center">';
+            echo'</a>';
+            echo'</div>';
+            $count++;
+              if($count%2==0){
+                echo'</div>';
+                echo'<div class="row">';
+              }
+          }
+        }
+        ?>
 </div>
-<div class="col-lg-6">
-<a href='https://www.cister.isep.ipp.pt/'><img src="images/cister.jpg" width="30%"
-					class="image-responsive center"> </a>
 </div>
-</div>
-</div>
-<!--
-<div class="cta cta-solid-bg cta-2-columns margin-top-50">
-<div class="container">
-<h2 class="heading">An elegant Bootstrap theme with tons of features</h2>
-<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> PURCHASE</a>
-</div>
-</div>
--->
 </div>
 <!-- END PAGE CONTENT -->
 <!-- FOOTER -->
