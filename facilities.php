@@ -19,13 +19,16 @@ include_once 'include/utils.php';
 	<!-- WRAPPER -->
 	<div id="wrapper">
 	<?php
+    include 'include/dbconfig.php';
+    ?>
+	<?php
 	include_once 'include/nav_bar.php';
 	?>
 		<!-- END NAVBAR -->
 		<!-- PAGE HEADER DEFAULT -->
 		<div class="page-header">
 			<div class="container">
-				<h1 class="page-title pull-left">Facilities</h1>
+				<h1 class="page-title pull-left">Gallery</h1>
 				<ol class="breadcrumb link-accent">
 					<li><a href="index.php">Home</a></li>
 
@@ -44,7 +47,7 @@ include_once 'include/utils.php';
 
 
 
-				<h2>RIOT Lab Facilities</h2>
+				<h2>RIOT Lab Gallery</h2>
 
 
 
@@ -62,30 +65,24 @@ include_once 'include/utils.php';
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
-						<div class="item active">
-							<img src="images/lab05.jpg" alt="Los Angeles">
-						</div>
-
-						<div class="item">
-							<img src="images/lab/3drsolo.jpg" alt="New York">
-						</div>
-						
-						<div class="item">
-							<img src="images/lab/rpi.jpg" alt="New York">
-						</div>
-						<div class="item">
-							<img src="images/lab/bebop.jpg" alt="New York">
-						</div>
-						<div class="item">
-							<img src="images/lab/cluster.jpg" alt="New York">
-						</div>
-						<div class="item">
-							<img src="images/lab/cluster2.jpg" alt="New York">
-						</div>
-						
-						<div class="item">
-							<img src="images/lab/drones.jpg" alt="Chicago">
-						</div>
+						<?php
+						$sql = 'SELECT * FROM gallery WHERE content_type = "picture"';
+						$count = 0;
+				$result = $dbconn->query($sql);
+				if ($result->num_rows >= 1) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+							echo '<div class="item';
+							if($count==0){
+								echo " active";
+							}
+							echo '">';
+							echo '<img src="'.$row["content_link"].'" alt="'.$row["content_name"].'">';
+							echo '</div>';
+							$count++;
+						}
+					}
+?>
 					</div>
 
 					<!-- Left and right controls -->
@@ -97,25 +94,18 @@ include_once 'include/utils.php';
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
-
-
 				<h2>Drone Virtual RIOT Lab Visit</h2>
-
-
-				<iframe width="800" height="600"
-					src="https://www.youtube.com/embed/gfl0bORdm3I?playlist=gfl0bORdm3Ik&loop=1">
-				</iframe>
-
-
+				<?php
+				$sql = 'SELECT * FROM gallery WHERE content_type = "video"';
+				$result = $dbconn->query($sql);
+				if ($result->num_rows >= 1) {
+					while($row = $result->fetch_assoc()) {
+							echo '<iframe width="800" height="600" src="'.$row["content_link"].'">';
+							echo '</iframe>';
+					}
+				}
+				?>
 			</div>
-			<!--
-<div class="cta cta-solid-bg cta-2-columns margin-top-50">
-<div class="container">
-<h2 class="heading">An elegant Bootstrap theme with tons of features</h2>
-<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> PURCHASE</a>
-</div>
-</div>
--->
 		</div>
 		<!-- END PAGE CONTENT -->
 		<!-- FOOTER -->
