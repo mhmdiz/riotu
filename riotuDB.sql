@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2017 at 07:03 PM
+-- Generation Time: Dec 16, 2017 at 08:00 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -130,7 +130,7 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_discription`) VALUES
 (1, NULL, 'New Grant Attracted', '2017-11-01', 'The RIOTU Lab would like to thank Gaitech Robotics (China) for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics.\r\n\r\n'),
-(2, NULL, 'Open Positions for Students', '2017-11-01', '2017-11-01');
+(2, NULL, 'Open Positions for Students', '2017-11-01', 'The RIOTU Lab is looking for talented and skilled students to join the research activities of the lab. We look for studengs with strong skills in programming and software development. Knowledge of drones, ROS, and Robotics will be an added value.');
 
 -- --------------------------------------------------------
 
@@ -337,7 +337,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `collaboration`
 --
 ALTER TABLE `collaboration`
-  MODIFY `collaboration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `collaboration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `events`
