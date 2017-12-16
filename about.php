@@ -16,6 +16,10 @@ include_once 'include/headers_links.php';
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
+	<?php 
+	include 'include/dbconfig.php';
+
+	 ?>
 	<?php
 	include_once 'include/nav_bar.php';
 	?>
@@ -35,62 +39,33 @@ include_once 'include/headers_links.php';
 		<!-- PAGE CONTENT -->
 		<div class="page-content no-margin-bottom">
 			<div class="container">
-				<a href='#'><img src="images/lab04.jpg" width="70%"
-					class="image-responsive center"> </a> <br> <br> <br> 
-				<p class="paragraph_large">One of the initiatives of the National
-					Transformation Program is coming up with a Low Cost Communication
-					Network for the Internet of Things (IoT) applications. IoT
-					applications span several areas of the Saudi Vision, Health, Energy
-					Consumption, Security Monitoring, etc. These applications can be
-					also used in the concept of smart housing, smart campus, and smart
-					workplace. Establishing a professional research environment in the
-					Robotics and Internet of Things (IoT) will contribute to 2030
-					initiative. It will pursue and attract external research funds and
-					grants from industry and external research programs by providing
-					consultation service as well as developing IoT solutions and
-					providing training services for Saudi Market.</p>
+				<?php
+						        $sql = "SELECT * FROM  about";
+						        $result = $dbconn->query($sql);
+						        if ($result->num_rows >= 1) {
+						          // output data of each row
+						          while($row = $result->fetch_assoc()) {
+						          	echo '<a href="#"><img src="'.$row["about_picture"].'" width="70%"
+					class="image-responsive center"> </a>';
+					echo ';<p class="paragraph_large">'.$row["about_description"].'</p>';
+					echo '<h2 class="section-heading">VISION</h2>';
+					echo '<p class="paragraph_large">'.$row["about_vision"].'</p>';
+					echo '<h2 class="section-heading">MISSION</h2>';
+					echo '<ul class="paragraph_large">
+					<li>'.$row["about_mission"].'</li>
+					<li></li>
+				</ul>';
+				echo '<h2 class="section-heading">OBJECTIVES</h2>';
+				echo '<ul class="paragraph_large">
+					<li>'.$row["about_objective"].'</li>
+				</ul>';
 
-				<h2 class="section-heading">VISION</h2>
-				<p class="paragraph_large">To be an internationally recognized
-					centre in robotics and internet of things</p>
+						          }
+						      }
 
-				<h2 class="section-heading">MISSION</h2>
-
-				<ul class="paragraph_large">
-					<li>To promote applied research on Robotics and Internet of Things
-						in Prince Sultan University through international collaboration
-						with industrial and academic partners</li>
-					<li>To develop robotics and IoT solutions for real applications to
-						sustain the economic and social development in Saudi Arabia inline
-						with 2030 vision.</li>
-
-				</ul>
+						      ?>
 
 
-
-				<h2 class="section-heading">OBJECTIVES</h2>
-
-				<ul class="paragraph_large">
-					<li>Establish a professional research environment in PSU in the
-						robotics and IoT research.</li>
-					<li>Attract external funds and grants to PSU.</li>
-					<li>Provide a consultation service to the industry both locally and
-						internationally.</li>
-					<li>Develop robotics and IoT solution’s for the Saudi Market in
-						collaboration with international companies.</li>
-					<li>Providing training services to communities in the field of
-						robotics and IoT.</li>
-					<li>Contribute to the involvement of undergraduate and graduate
-						students in professional research and promote their intellectual
-						and learning skills.</li>
-					<li>Establish international collaboration with reputed research
-						groups and institutions in robotics and IoT.</li>
-					<li>Contribute to the enrichment of computer science and
-						engineering programs in the field of robotics and IoT</li>
-
-				</ul>
-
-			</div>
 			<!--
 <div class="cta cta-solid-bg cta-2-columns margin-top-50">
 <div class="container">
