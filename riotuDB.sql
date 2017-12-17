@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2017 at 10:43 PM
+-- Generation Time: Dec 17, 2017 at 10:33 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -175,6 +175,7 @@ CREATE TABLE `person` (
   `person_location` text NOT NULL,
   `person_phone` varchar(15) NOT NULL,
   `person_email` varchar(50) NOT NULL,
+  `person_website` text NOT NULL,
   `social_facebook` text NOT NULL,
   `social_website` text NOT NULL,
   `social_linkedin` text NOT NULL,
@@ -185,13 +186,13 @@ CREATE TABLE `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`person_id`, `person_name`, `person_level`, `person_major`, `person_location`, `person_phone`, `person_email`, `social_facebook`, `social_website`, `social_linkedin`, `social_twitter`) VALUES
-(1, 'Prof. Anis Koubaa', 'Director', 'Robotic Software Engineering, Internet-of-Things, Wireless Sensor Networks, Cloud Robotics, Robot Operating System (ROS)', 'Prince Sultan University, College of Computer and Information Sciences, Office E256 (Old Building), Rafha Street, Saudi Arabia', '(11) 494 - 8851', 'akoubaa at psu.edu.sa', '', '', 'https://www.linkedin.com/in/anis-koubaa-84aa4344/', ''),
-(2, 'Dr. Basit Qureshi', 'Senior Researcher', 'Cloud Computing, Distributed Systems', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8284', 'qureshi at psu.edu.sa', '', '', '', ''),
-(3, 'Dr. Dhafer Almakles', 'Senior Researcher', 'Control Theory, Non-Linear Control, Networked, Event-triggered and Quantized Control Systems, Design Nonlinear Control System', 'Prince Sultan University, College of Engineering, Rafha Street, Saudi Arabia', '(11) 494 - 8284', 'dalmakhles at psu.edu.sa', '', '', '', ''),
-(4, 'Yasir Javed', 'Researcher', 'Mobile Robots, 5G Wireless Networks, Internet-of-Things, Robot Operating System (ROS)', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8287', 'yjaved at psu.edu.sa', '', '', '', ''),
-(5, 'Ms. Maram Alajlan', 'Researcher', 'Robot Operating System (ROS), Robotics Path Planning, Internet-of-Things, Cloud Robotics', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8172', 'majlan at psu.edu.sa', '', '', '', ''),
-(6, 'Taha Ahmed Khursheed', 'Student Member', 'Network and Communication Engineering', 'Prince Sultan University, College of Egineering, Rafha Street, Saudi Arabia', 'N/A', 'yjaved at psu.edu.sa', '', '', '', '');
+INSERT INTO `person` (`person_id`, `person_name`, `person_level`, `person_major`, `person_location`, `person_phone`, `person_email`, `person_website`, `social_facebook`, `social_website`, `social_linkedin`, `social_twitter`) VALUES
+(1, 'Prof. Anis Koubaa', 'Director', 'Robotic Software Engineering, Internet-of-Things, Wireless Sensor Networks, Cloud Robotics, Robot Operating System (ROS)', 'Prince Sultan University, College of Computer and Information Sciences, Office E256 (Old Building), Rafha Street, Saudi Arabia', '(11) 494 - 8851', 'akoubaa@psu.edu.sa', 'akoubaa/index.php', '', '', 'https://www.linkedin.com/in/anis-koubaa-84aa4344/', ''),
+(2, 'Dr. Basit Qureshi', 'Senior Researcher', 'Cloud Computing, Distributed Systems', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8284', 'qureshi@psu.edu.sa', '', '', '', '', ''),
+(3, 'Dr. Dhafer Almakles', 'Senior Researcher', 'Control Theory, Non-Linear Control, Networked, Event-triggered and Quantized Control Systems, Design Nonlinear Control System', 'Prince Sultan University, College of Engineering, Rafha Street, Saudi Arabia', '(11) 494 - 8284', 'dalmakhles@psu.edu.sa', '', '', '', '', ''),
+(4, 'Yasir Javed', 'Researcher', 'Mobile Robots, 5G Wireless Networks, Internet-of-Things, Robot Operating System (ROS)', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8287', 'yjaved@psu.edu.sa', '', '', '', '', ''),
+(5, 'Ms. Maram Alajlan', 'Researcher', 'Robot Operating System (ROS), Robotics Path Planning, Internet-of-Things, Cloud Robotics', 'Prince Sultan University, College of Computer and Information Sciences, Rafha Street, Saudi Arabia', '(11) 494 - 8172', 'majlan@psu.edu.sa', '', '', '', '', ''),
+(6, 'Taha Ahmed Khursheed', 'Student Member', 'Network and Communication Engineering', 'Prince Sultan University, College of Egineering, Rafha Street, Saudi Arabia', 'N/A', 'yjaved@psu.edu.sa', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -359,7 +360,7 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `collaboration`
 --
 ALTER TABLE `collaboration`
-  MODIFY `collaboration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `collaboration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -383,7 +384,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `newsletter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `newsletter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `person`
