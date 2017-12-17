@@ -104,6 +104,8 @@
 		          	$count++;
 		          		if($count%3==0){							
 							echo'</div>';
+							echo '<br>';
+							echo '<br>';
                	  		    echo'<div class="row">';
               		 	}
                   }
