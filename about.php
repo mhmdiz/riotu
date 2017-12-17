@@ -18,7 +18,6 @@ include_once 'include/headers_links.php';
 	<div id="wrapper">
 	<?php 
 	include 'include/dbconfig.php';
-
 	 ?>
 	<?php
 	include_once 'include/nav_bar.php';
@@ -44,36 +43,43 @@ include_once 'include/headers_links.php';
 						        $result = $dbconn->query($sql);
 						        if ($result->num_rows >= 1) {
 						          // output data of each row
-						          while($row = $result->fetch_assoc()) {
-						          	echo '<a href="#"><img src="'.$row["about_picture"].'" width="70%"
-					class="image-responsive center"> </a>';
-					echo ';<p class="paragraph_large">'.$row["about_description"].'</p>';
-					echo '<h2 class="section-heading">VISION</h2>';
-					echo '<p class="paragraph_large">'.$row["about_vision"].'</p>';
-					echo '<h2 class="section-heading">MISSION</h2>';
-					echo '<ul class="paragraph_large">
-					<li>'.$row["about_mission"].'</li>
-					<li></li>
-				</ul>';
-				echo '<h2 class="section-heading">OBJECTIVES</h2>';
-				echo '<ul class="paragraph_large">
-					<li>'.$row["about_objective"].'</li>
-				</ul>';
+						          $row = $result->fetch_assoc();
 
+						          echo '<a href="#">';
+						          echo '<img src="'.$row["about_picture"].'" width="70%" class="image-responsive center">';
+						          echo '</a> <br> <br> <br>';
+						          echo '<p class="paragraph_large">'.$row["about_description"].'</p>';
+						          echo '<h2 class="section-heading">VISION</h2>';
+						          echo '<p class="paragraph_large">'.$row["about_vision"].'</p>';
+						          echo '<h2 class="section-heading">MISSION</h2>';
+						          echo '<ul class="paragraph_large">';
+						      	}		
+						          $sql = 'SELECT * FROM  about';
+						        $result = $dbconn->query($sql);
+						        $count=0;
+						        if ($result->num_rows >= 1) {
+						          while ($row = $result->fetch_assoc()) {
+						          	if($count>=2){
+						          	}else{
+						          	echo '<li>'.$row["about_mission"].'</li>';
+						          	$count++;
 						          }
-						      }
+						          }
+						      	}
+						      	echo '</ul>';
+						      	echo '<h2 class="section-heading">OBJECTIVES</h2>';
+						      	echo '<ul class="paragraph_large">';
 
-						      ?>
-
-
-			<!--
-<div class="cta cta-solid-bg cta-2-columns margin-top-50">
-<div class="container">
-<h2 class="heading">An elegant Bootstrap theme with tons of features</h2>
-<a href="#" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i> PURCHASE</a>
-</div>
-</div>
--->
+						      	$sql = 'SELECT * FROM  about WHERE "about_objective" IS NOT NULL';
+						        $result = $dbconn->query($sql);
+						        if ($result->num_rows >= 1) {
+						          while ($row = $result->fetch_assoc()) {
+						          	echo '<li>'.$row["about_objective"].'</li>';
+						          }
+						      	}
+				?>
+				</ul>
+			</div>
 		</div>
 		<!-- END PAGE CONTENT -->
 		<!-- FOOTER -->
