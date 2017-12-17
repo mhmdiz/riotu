@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2017 at 08:00 PM
+-- Generation Time: Dec 16, 2017 at 10:43 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about` (
+  `about_id` int(11) NOT NULL,
   `about_picture` text NOT NULL,
   `about_description` text NOT NULL,
   `about_vision` text NOT NULL,
-  `about_mission` text NOT NULL,
+  `about_mission` text,
   `about_objective` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,8 +41,15 @@ CREATE TABLE `about` (
 -- Dumping data for table `about`
 --
 
-INSERT INTO `about` (`about_picture`, `about_description`, `about_vision`, `about_mission`, `about_objective`) VALUES
-('images/lab04.jpg', 'One of the initiatives of the National Transformation Program is coming up with a Low Cost Communication Network for the Internet of Things (IoT) applications. IoT applications span several areas of the Saudi Vision, Health, Energy Consumption, Security Monitoring, etc. These applications can be also used in the concept of smart housing, smart campus, and smart workplace. Establishing a professional research environment in the Robotics and Internet of Things (IoT) will contribute to 2030 initiative. It will pursue and attract external research funds and grants from industry and external research programs by providing consultation service as well as developing IoT solutions and providing training services for Saudi Market.', 'To be an internationally recognized centre in robotics and internet of things', 'To promote applied research on Robotics and Internet of Things in Prince Sultan University through international collaboration with industrial and academic partners\r\nTo develop robotics and IoT solutions for real applications to sustain the economic and social development in Saudi Arabia inline with 2030 vision.', 'Establish a professional research environment in PSU in the robotics and IoT research.\r\nAttract external funds and grants to PSU.\r\nProvide a consultation service to the industry both locally and internationally.\r\nDevelop robotics and IoT solution’s for the Saudi Market in collaboration with international companies.\r\nProviding training services to communities in the field of robotics and IoT.\r\nContribute to the involvement of undergraduate and graduate students in professional research and promote their intellectual and learning skills.\r\nEstablish international collaboration with reputed research groups and institutions in robotics and IoT.\r\nContribute to the enrichment of computer science and engineering programs in the field of robotics and IoT');
+INSERT INTO `about` (`about_id`, `about_picture`, `about_description`, `about_vision`, `about_mission`, `about_objective`) VALUES
+(1, 'images/lab04.jpg', 'One of the initiatives of the National Transformation Program is coming up with a Low Cost Communication Network for the Internet of Things (IoT) applications. IoT applications span several areas of the Saudi Vision, Health, Energy Consumption, Security Monitoring, etc. These applications can be also used in the concept of smart housing, smart campus, and smart workplace. Establishing a professional research environment in the Robotics and Internet of Things (IoT) will contribute to 2030 initiative. It will pursue and attract external research funds and grants from industry and external research programs by providing consultation service as well as developing IoT solutions and providing training services for Saudi Market.', 'To be an internationally recognized centre in robotics and internet of things', 'To promote applied research on Robotics and Internet of Things in Prince Sultan University through international collaboration with industrial and academic partners', 'Establish a professional research environment in PSU in the robotics and IoT research.'),
+(2, '', '', '', 'To develop robotics and IoT solutions for real applications to sustain the economic and social development in Saudi Arabia inline with 2030 vision.', 'Attract external funds and grants to PSU.'),
+(3, '', '', '', NULL, 'Provide a consultation service to the industry both locally and internationally.'),
+(4, '', '', '', NULL, 'Develop robotics and IoT solution\'s for the Saudi Market in collaboration with international companies.'),
+(5, '', '', '', NULL, 'Providing training services to communities in the field of robotics and IoT.'),
+(6, '', '', '', NULL, 'Contribute to the involvement of undergraduate and graduate students in professional research and promote their intellectual and learning skills.'),
+(7, '', '', '', NULL, 'Establish international collaboration with reputed research groups and institutions in robotics and IoT.'),
+(8, '', '', '', NULL, 'Contribute to the enrichment of computer science and engineering programs in the field of robotics and IoT');
 
 -- --------------------------------------------------------
 
@@ -74,15 +82,16 @@ CREATE TABLE `events` (
   `event_picture` text NOT NULL,
   `event_name` varchar(50) NOT NULL,
   `event_description` text NOT NULL,
-  `event_date` date NOT NULL
+  `event_date` varchar(50) NOT NULL,
+  `event_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`event_id`, `event_picture`, `event_name`, `event_description`, `event_date`) VALUES
-(1, 'images/drone-training.png', 'Drone Pilot Training Certificate', 'The objective of this training program is to provide a quick start to drone piloting with the MAVLink protocol. Learning how to pilot drone and define autonomous mission is very challenging and time consuming. There is a huge amount of informtaion to know, yet this information is very scattered on the Internet. By attending the 13-hour training sessions, the participant will have a full understanding of drone technologies, and will have the ability to build hos own drone, and enjoy piloting it either with a remote control or using a ground station.', '2017-03-30');
+INSERT INTO `events` (`event_id`, `event_picture`, `event_name`, `event_description`, `event_date`, `event_link`) VALUES
+(1, 'images/drone-training.png', 'Drone Pilot Training Certificate', 'The objective of this training program is to provide a quick start to drone piloting with the MAVLink protocol. Learning how to pilot drone and define autonomous mission is very challenging and time consuming. There is a huge amount of informtaion to know, yet this information is very scattered on the Internet. By attending the 13-hour training sessions, the participant will have a full understanding of drone technologies, and will have the ability to build hos own drone, and enjoy piloting it either with a remote control or using a ground station.', 'March\r\n										28-30, 2017', 'http://wiki.coins-lab.org/trainings/drone/index.html');
 
 -- --------------------------------------------------------
 
@@ -92,6 +101,7 @@ INSERT INTO `events` (`event_id`, `event_picture`, `event_name`, `event_descript
 
 CREATE TABLE `gallery` (
   `content_id` int(11) NOT NULL,
+  `content_name` varchar(50) NOT NULL,
   `content_type` varchar(50) NOT NULL,
   `content_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -100,15 +110,15 @@ CREATE TABLE `gallery` (
 -- Dumping data for table `gallery`
 --
 
-INSERT INTO `gallery` (`content_id`, `content_type`, `content_link`) VALUES
-(1, 'picture', 'images/lab05.jpg'),
-(2, 'picture', 'images/lab/3drsolo.jpg'),
-(3, 'picture', 'images/lab/rpi.jpg'),
-(4, 'picture', 'images/lab/bebop.jpg'),
-(5, 'picture', 'images/lab/cluster.jpg'),
-(6, 'picture', 'images/lab/cluster2.jpg'),
-(7, 'picture', 'images/lab/drones.jpg'),
-(8, 'video', 'https://i.ytimg.com/vi_webp/gfl0bORdm3I/hqdefault.webp');
+INSERT INTO `gallery` (`content_id`, `content_name`, `content_type`, `content_link`) VALUES
+(1, 'Los Angeles', 'picture', 'images/lab05.jpg'),
+(2, 'New York', 'picture', 'images/lab/3drsolo.jpg'),
+(3, 'New York', 'picture', 'images/lab/rpi.jpg'),
+(4, 'New York', 'picture', 'images/lab/bebop.jpg'),
+(5, 'New York', 'picture', 'images/lab/cluster.jpg'),
+(6, 'New York', 'picture', 'images/lab/cluster2.jpg'),
+(7, 'Chicago', 'picture', 'images/lab/drones.jpg'),
+(8, '', 'video', 'https://www.youtube.com/embed/gfl0bORdm3I?playlist=gfl0bORdm3Ik&loop=1');
 
 -- --------------------------------------------------------
 
@@ -276,6 +286,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`about_id`);
+
+--
 -- Indexes for table `collaboration`
 --
 ALTER TABLE `collaboration`
@@ -332,6 +348,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `about`
+--
+ALTER TABLE `about`
+  MODIFY `about_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `collaboration`
