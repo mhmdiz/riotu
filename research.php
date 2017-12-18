@@ -18,6 +18,9 @@
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
+	<?php 
+	include 'include/dbconfig.php';
+	?>
 	<?php include_once 'include/nav_bar.php';?>
 
 		<!-- PAGE HEADER DEFAULT -->
@@ -35,36 +38,36 @@
 		<!-- PAGE CONTENT -->
 		<div class="page-content no-margin-bottom">
 			<div class="container">
+				<?php  
+				$sql = "SELECT * FROM realresearch";
+		        $result = $dbconn->query($sql);
+		        if ($result->num_rows >= 1) {
+		        	while($row = $result->fetch_assoc()) {
+		        		echo '<a href="#">';
+		          		echo '<h2 class="section-heading">RESEARCH AREAS</h2>';
+		          		echo '<div class="paragraph_large">'.$row["real_research_description"].'';
+		        	}
+		      	}
+		      	$sql = 'SELECT * FROM  realresearch WHERE "real_research_points" IS NOT NULL';
+						        $result = $dbconn->query($sql);
+						        if ($result->num_rows >= 1) {
+						          while ($row = $result->fetch_assoc()) {
+						          	echo '<li>'.$row["real_research_points"].'</li></div>';
+						          }
+						      	}
+						      	echo '<h2 class="section-heading">CONSULTATION SERVICES</h2>';
+						      	//echo '<div class="paragraph_large">'.$row["real_research_consultation_description"].'';
+						      	
+				?>
+
 				<p></p>
 
-				<h2 class="section-heading">RESEARCH AREAS</h2>
+
+				
 				
 
-				<div class="paragraph_large">
-					The <strong>Robotics and Internet-of-Things</strong> research lab focuses on the
-					integration of robots into the Internet of Things to promote new
-					types of applications that leverage the use of these two
-					technologies. RIOT has a long expertise in developing solutions for
-					Internet-of-Things and Mobile Robots. The research lab also fosters its
-					activites to be aligned with national priorities in particular the
-					2020 National Transformation Plan and 2030 Vision. In particular,
-					with a strategic vision for the future, RIOT is working in emerging
-					topics such as:
-
-<br><br>
-
-					<ul>
-						<li>Software Engineering for Cloud Robotics</li>
-						<li>Big data analytics for IoT and Robotics applications</li>
-						<li>Security and safety of drones</li>
-						<li>Integration of robots/drones into the IoT and the Cloud</li>
-						<li>Communication and Networking for the IoT</li>
-						<li>AI Algorithms for Planning in Robotics</li>
-						<li>Design of Unmanned Aerial Vehicles (UAVs) and their applications</li>
-					</ul>
-				</div>
-				<br>
-				<h2 class="section-heading">CONSULTATION SERVICES</h2>
+				
+				
 				
 <div class="paragraph_large">
 					The <strong>Robotics and Internet-of-Things</strong> provides consultation services to industry, academia and government institutions to develop real-world solutions around our research areas. 
