@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 17, 2017 at 10:33 AM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 18, 2017 at 09:32 PM
 -- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- PHP Version: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `riotuDB`
+-- Database: `riotudb`
 --
 
 -- --------------------------------------------------------
@@ -241,6 +241,26 @@ INSERT INTO `publications` (`publication_id`, `publication_name`, `director`, `r
 (24, 'ROS Web Services: A Tutorial', 'Fatma Ellouze, Anis Koubaa, Habib Youssef, ', 'Robot Operating System (ROS),', 'February 2016', 'http://link.springer.com/chapter/10.1007/978-3-319-26054-9_18', 'Springer', 'book_chapter'),
 (25, 'Writing Global Path Planners Plugins in ROS: A Tutorial', 'Maram Alajlan, Anis Koubaa, ', 'Robot Operating System (ROS),', 'February 2016', 'http://link.springer.com/chapter/10.1007/978-3-319-26054-9_4', 'Springer', 'book_chapter'),
 (26, 'COROS: a multi-agent software architecture for cooperative and autonomous service robots', 'Anis Koubaa, Mohamed-Foued Sriti, Hachemi Bennaceur, Adel Ammar, Yasir Javed, Maram Alajlan, Nada Al-Elaiwi, Mohamed Tounsi, Elhadi Shakshuki, ', 'Cooperative Robots and Sensor Networks 2015', 'May 2015', 'http://link.springer.com/chapter/10.1007/978-3-319-18299-5_1', 'Springer', 'book_chapter');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `realresearch`
+--
+
+CREATE TABLE `realresearch` (
+  `real_research_id` int(11) NOT NULL,
+  `real_research_description` text NOT NULL,
+  `real_research_points` text NOT NULL,
+  `real_research_consultation_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `realresearch`
+--
+
+INSERT INTO `realresearch` (`real_research_id`, `real_research_description`, `real_research_points`, `real_research_consultation_description`) VALUES
+(0, 'The Robotics and Internet-of-Things research lab focuses on the integration of robots into the Internet of Things to promote new types of applications that leverage the use of these two technologies. RIOT has a long expertise in developing solutions for Internet-of-Things and Mobile Robots. The research lab also fosters its activites to be aligned with national priorities in particular the 2020 National Transformation Plan and 2030 Vision. In particular, with a strategic vision for the future, RIOT is working in emerging topics such as: ', 'Software Engineering for Cloud Robotics\r\nBig data analytics for IoT and Robotics applications\r\nSecurity and safety of drones\r\nIntegration of robots/drones into the IoT and the Cloud\r\nCommunication and Networking for the IoT\r\nAI Algorithms for Planning in Robotics\r\nDesign of Unmanned Aerial Vehicles (UAVs) and their applications', 'The Robotics and Internet-of-Things provides consultation services to industry, academia and government institutions to develop real-world solutions around our research areas. We also provide training services on drones building, piloting and applications development, robots software development, Robot Operating System (ROS). For further information, contact us.');
 
 -- --------------------------------------------------------
 
