@@ -20,7 +20,7 @@
 	<div id="wrapper">
 	<?php 
 	include 'include/dbconfig.php';
-	?>
+	 ?>
 	<?php include_once 'include/nav_bar.php';?>
 
 		<!-- PAGE HEADER DEFAULT -->
@@ -38,45 +38,36 @@
 		<!-- PAGE CONTENT -->
 		<div class="page-content no-margin-bottom">
 			<div class="container">
-				<?php  
-				$sql = "SELECT * FROM realresearch";
-		        $result = $dbconn->query($sql);
-		        if ($result->num_rows >= 1) {
-		        	while($row = $result->fetch_assoc()) {
-		        		echo '<a href="#">';
-		          		echo '<h2 class="section-heading">RESEARCH AREAS</h2>';
-		          		echo '<div class="paragraph_large">'.$row["real_research_description"].'';
-		        	}
-		      	}
-		      	$sql = 'SELECT * FROM  realresearch WHERE "real_research_points" IS NOT NULL';
-						        $result = $dbconn->query($sql);
-						        if ($result->num_rows >= 1) {
-						          while ($row = $result->fetch_assoc()) {
-						          	echo '<li>'.$row["real_research_points"].'</li></div>';
-						          }
-						      	}
-						      	echo '<h2 class="section-heading">CONSULTATION SERVICES</h2>';
-						      	//echo '<div class="paragraph_large">'.$row["real_research_consultation_description"].'';
-						      	
-				?>
-
 				<p></p>
 
 
-				
-				
+				<?php
+						        $sql = "SELECT * FROM realresearch";
+						        $result = $dbconn->query($sql);
+						        if ($result->num_rows >= 1) {
+						          while($row = $result->fetch_assoc()){
+						          echo '<h2 class="section-heading">'.$row["realresearch_title"].'</h2>';
+						          echo '<div class="paragraph_large">'.$row["realresearch_description"];
+						          $sql2 = "SELECT * FROM realresearch_info WHERE realresearch_points_id =".$row["realresearch_id"];
+						        	$result2 = $dbconn->query($sql2);
+						        			echo '<br><br>';
+						       			    echo '<ul>';
+						        		if ($result2->num_rows >= 1) {
+						          		while($row2 = $result2->fetch_assoc()){
+						       			    echo '<li>'.$row2["realresearch_points"].'</li>';
+										}
+									}
+									echo '</ul>';
+									echo '<br>';
+									echo '</div>';
+								}
+									
+									echo '</div>';
+							}
+
+						          ?>
 
 				
-				
-				
-<div class="paragraph_large">
-					The <strong>Robotics and Internet-of-Things</strong> provides consultation services to industry, academia and government institutions to develop real-world solutions around our research areas. 
-					We also provide training services on drones building, piloting and applications development, robots software development, Robot Operating System (ROS).
-					For further information, contact us.  
-
-				</div>
-			</div>
-			
 			
 			<!--
 <div class="cta cta-solid-bg cta-2-columns margin-top-50">
