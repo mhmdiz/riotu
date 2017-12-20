@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2017 at 03:10 PM
+-- Generation Time: Dec 20, 2017 at 05:21 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -50,6 +50,30 @@ INSERT INTO `about` (`about_id`, `about_picture`, `about_description`, `about_vi
 (6, '', '', '', NULL, 'Contribute to the involvement of undergraduate and graduate students in professional research and promote their intellectual and learning skills.'),
 (7, '', '', '', NULL, 'Establish international collaboration with reputed research groups and institutions in robotics and IoT.'),
 (8, '', '', '', NULL, 'Contribute to the enrichment of computer science and engineering programs in the field of robotics and IoT');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ads`
+--
+
+CREATE TABLE `ads` (
+  `ad_id` int(11) NOT NULL,
+  `ad_title` varchar(200) NOT NULL,
+  `ad_info` varchar(200) NOT NULL,
+  `ad_image` text NOT NULL,
+  `ad_image_link` text NOT NULL,
+  `ad_botton_title` varchar(50) NOT NULL,
+  `ad_botton_link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ads`
+--
+
+INSERT INTO `ads` (`ad_id`, `ad_title`, `ad_info`, `ad_image`, `ad_image_link`, `ad_botton_title`, `ad_botton_link`) VALUES
+(1, 'Robot Operating\r\n							System (ROS): The Complete Reference (Volume 2)', '', 'images/rosbook2.jpg', 'http://www.springer.com/us/book/9783319549262', 'PURCHASE', 'http://www.springer.com/us/book/9783319549262'),
+(2, 'RIOT Organizes the Second Drone Pilot Certificate Program', 'at Prince Sultan University, Riyadh, 							January 2018', 'images/drone-training.png', '', 'REGISTER NOW', '');
 
 -- --------------------------------------------------------
 
@@ -123,6 +147,45 @@ INSERT INTO `gallery` (`content_id`, `content_name`, `content_type`, `content_li
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `main_images`
+--
+
+CREATE TABLE `main_images` (
+  `logo` text NOT NULL,
+  `background` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `main_images`
+--
+
+INSERT INTO `main_images` (`logo`, `background`) VALUES
+('images/riotu-logo-w.png', 'images/profile-background-psu.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `main_info`
+--
+
+CREATE TABLE `main_info` (
+  `main_info_id` int(11) NOT NULL,
+  `main_info_class` text NOT NULL,
+  `main_info_title` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `main_info`
+--
+
+INSERT INTO `main_info` (`main_info_id`, `main_info_class`, `main_info_title`) VALUES
+(1, 'icon icon_book_alt ico-styled-md text-primary', 'LATEST PUBLICATIONS'),
+(2, 'icon icon_lightbulb ico-styled-md text-primary', 'LATEST NEWS'),
+(3, 'icon icon_gift ico-styled-md text-primary', 'NEWSLETTER');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `news`
 --
 
@@ -139,7 +202,7 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_discription`) VALUES
-(1, NULL, 'New Grant Attracted', '2017-11-01', 'The RIOTU Lab would like to thank Gaitech Robotics (China) for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics.\r\n\r\n'),
+(1, NULL, 'New Grant Attracted', '2017-11-01', 'The RIOTU Lab would like to thank <a href=\"http://www.gaitech.com/\">Gaitech Robotics (China)</a> for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics.\r\n\r\n'),
 (2, NULL, 'Open Positions for Students', '2017-11-01', 'The RIOTU Lab is looking for talented and skilled students to join the research activities of the lab. We look for studengs with strong skills in programming and software development. Knowledge of drones, ROS, and Robotics will be an added value.');
 
 -- --------------------------------------------------------
@@ -235,7 +298,7 @@ INSERT INTO `publications` (`publication_id`, `publication_name`, `director`, `r
 (18, 'A Service-Oriented Cloud-Based Management System for the Internet-of-Drones', 'Anis Koubaa, Basit Qureshi, Mohamed-Foued Sriti, Yasir Javed, Eduardo Tovar, ', '17th International Conference on Autonomous Robot Systems and Competitions (ICARSC 2017).', 'January 2017', '', 'IEEE', 'conference'),
 (19, 'On Power Consumption Profiles for Data Intensive Workloads in Virtualized Hadoop Clusters', 'Basit Qureshi, Sultan Alwehaibi, Anis Koubaa, ', '2017 IEEE International Conference on Computer Communications (INFOCOM), ', 'May 2017', '', 'IEEE\r\n', 'conference'),
 (20, 'Performance of a Low Cost Hadoop Cluster for Image Analysis in Cloud Robotics Environment', 'Basit Qureshi, Yasir Javed, Anis Koubaa, Mohamed-Foued Sriti, Maram Alajlan, ', 'Procedia Computer Science,', 'December 2017', 'http://www.sciencedirect.com/science/article/pii/S1877050916300278', 'Elsevier', 'conference'),
-(21, 'Turtlebot at Office: A Service-Oriented Software Architecture for Personal Assistant Robots Using ROS', 'Anis Koubaa, Mohamed-Foued Sriti, Yasir Javed, Maram Alajlan, Basit Qureshi, Fatma Ellouze, Abdelrahman Mahmoud, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', '2016-03-01', 'http://ieeexplore.ieee.org/abstract/document/7781988/', 'IEEE', 'conference'),
+(21, 'Turtlebot at Office: A Service-Oriented Software Architecture for Personal Assistant Robots Using ROS', 'Anis Koubaa, Mohamed-Foued Sriti, Yasir Javed, Maram Alajlan, Basit Qureshi, Fatma Ellouze, Abdelrahman Mahmoud, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', 'March 2016', 'http://ieeexplore.ieee.org/abstract/document/7781988/', 'IEEE', 'conference'),
 (22, 'Analytical Hierarchy Process based Multi-objective Multiple Traveling Salesman Problem', 'Omar Cheikhrouhou, Anis Koubaa, Anis Zaard, ', 'Autonomous Robot Systems and Competitions (ICARSC), 2016 International Conference,', 'May 2016', 'http://ieeexplore.ieee.org/abstract/document/7781965/', 'IEEE', 'conference'),
 (23, 'A Clustering Market-Based Approach for Multi-robot Emergency Response Applications', 'Sahar Trigui, Anis Koubaa, Omar Cheikhrouhou, Basit Qureshi,, Habib Youssef, ', '2016 International Conference on Autonomous Robot Systems and Competitions (ICARSC),', 'May 2016', 'http://ieeexplore.ieee.org/abstract/document/7781966/', 'IEEE', 'conference'),
 (24, 'ROS Web Services: A Tutorial', 'Fatma Ellouze, Anis Koubaa, Habib Youssef, ', 'Robot Operating System (ROS),', 'February 2016', 'http://link.springer.com/chapter/10.1007/978-3-319-26054-9_18', 'Springer', 'book_chapter'),
@@ -337,6 +400,12 @@ ALTER TABLE `about`
   ADD PRIMARY KEY (`about_id`);
 
 --
+-- Indexes for table `ads`
+--
+ALTER TABLE `ads`
+  ADD PRIMARY KEY (`ad_id`);
+
+--
 -- Indexes for table `collaboration`
 --
 ALTER TABLE `collaboration`
@@ -353,6 +422,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`content_id`);
+
+--
+-- Indexes for table `main_info`
+--
+ALTER TABLE `main_info`
+  ADD PRIMARY KEY (`main_info_id`);
 
 --
 -- Indexes for table `news`
@@ -407,6 +482,12 @@ ALTER TABLE `about`
   MODIFY `about_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `ads`
+--
+ALTER TABLE `ads`
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `collaboration`
 --
 ALTER TABLE `collaboration`
@@ -423,6 +504,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `gallery`
   MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `main_info`
+--
+ALTER TABLE `main_info`
+  MODIFY `main_info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `news`
