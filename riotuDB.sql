@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 18, 2017 at 09:32 PM
+-- Host: localhost
+-- Generation Time: Dec 20, 2017 at 03:10 PM
 -- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `riotudb`
+-- Database: `riotuDB`
 --
 
 -- --------------------------------------------------------
@@ -249,18 +249,42 @@ INSERT INTO `publications` (`publication_id`, `publication_name`, `director`, `r
 --
 
 CREATE TABLE `realresearch` (
-  `real_research_id` int(11) NOT NULL,
-  `real_research_description` text NOT NULL,
-  `real_research_points` text NOT NULL,
-  `real_research_consultation_description` text NOT NULL
+  `realresearch_id` int(11) NOT NULL,
+  `realresearch_title` varchar(50) NOT NULL,
+  `realresearch_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `realresearch`
 --
 
-INSERT INTO `realresearch` (`real_research_id`, `real_research_description`, `real_research_points`, `real_research_consultation_description`) VALUES
-(0, 'The Robotics and Internet-of-Things research lab focuses on the integration of robots into the Internet of Things to promote new types of applications that leverage the use of these two technologies. RIOT has a long expertise in developing solutions for Internet-of-Things and Mobile Robots. The research lab also fosters its activites to be aligned with national priorities in particular the 2020 National Transformation Plan and 2030 Vision. In particular, with a strategic vision for the future, RIOT is working in emerging topics such as: ', 'Software Engineering for Cloud Robotics\r\nBig data analytics for IoT and Robotics applications\r\nSecurity and safety of drones\r\nIntegration of robots/drones into the IoT and the Cloud\r\nCommunication and Networking for the IoT\r\nAI Algorithms for Planning in Robotics\r\nDesign of Unmanned Aerial Vehicles (UAVs) and their applications', 'The Robotics and Internet-of-Things provides consultation services to industry, academia and government institutions to develop real-world solutions around our research areas. We also provide training services on drones building, piloting and applications development, robots software development, Robot Operating System (ROS). For further information, contact us.');
+INSERT INTO `realresearch` (`realresearch_id`, `realresearch_title`, `realresearch_description`) VALUES
+(1, 'RESEARCH AREAS', 'The Robotics and Internet-of-Things research lab focuses on the integration of robots into the Internet of Things to promote new types of applications that leverage the use of these two technologies. RIOT has a long expertise in developing solutions for Internet-of-Things and Mobile Robots. The research lab also fosters its activites to be aligned with national priorities in particular the 2020 National Transformation Plan and 2030 Vision. In particular, with a strategic vision for the future, RIOT is working in emerging topics such as: \r\n'),
+(2, 'CONSULTATION SERVICES', 'The Robotics and Internet-of-Things provides consultation services to industry, academia and government institutions to develop real-world solutions around our research areas. We also provide training services on drones building, piloting and applications development, robots software development, Robot Operating System (ROS). For further information, contact us.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `realresearch_info`
+--
+
+CREATE TABLE `realresearch_info` (
+  `realresearch_points_id` int(11) NOT NULL,
+  `realresearch_points` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `realresearch_info`
+--
+
+INSERT INTO `realresearch_info` (`realresearch_points_id`, `realresearch_points`) VALUES
+(1, 'Software Engineering for Cloud Robotics\r\n'),
+(1, 'Big data analytics for IoT and Robotics applications'),
+(1, 'Security and safety of drones'),
+(1, 'Integration of robots/drones into the IoT and the Cloud'),
+(1, 'Communication and Networking for the IoT'),
+(1, 'AI Algorithms for Planning in Robotics'),
+(1, 'Design of Unmanned Aerial Vehicles (UAVs) and their applications');
 
 -- --------------------------------------------------------
 
@@ -355,6 +379,12 @@ ALTER TABLE `publications`
   ADD PRIMARY KEY (`publication_id`);
 
 --
+-- Indexes for table `realresearch`
+--
+ALTER TABLE `realresearch`
+  ADD PRIMARY KEY (`realresearch_id`);
+
+--
 -- Indexes for table `research`
 --
 ALTER TABLE `research`
@@ -417,6 +447,12 @@ ALTER TABLE `person`
 --
 ALTER TABLE `publications`
   MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `realresearch`
+--
+ALTER TABLE `realresearch`
+  MODIFY `realresearch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `research`
