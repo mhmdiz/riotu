@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2017 at 05:21 PM
+-- Generation Time: Dec 22, 2017 at 07:55 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -59,6 +59,7 @@ INSERT INTO `about` (`about_id`, `about_picture`, `about_description`, `about_vi
 
 CREATE TABLE `ads` (
   `ad_id` int(11) NOT NULL,
+  `ad_background` text NOT NULL,
   `ad_title` varchar(200) NOT NULL,
   `ad_info` varchar(200) NOT NULL,
   `ad_image` text NOT NULL,
@@ -71,9 +72,9 @@ CREATE TABLE `ads` (
 -- Dumping data for table `ads`
 --
 
-INSERT INTO `ads` (`ad_id`, `ad_title`, `ad_info`, `ad_image`, `ad_image_link`, `ad_botton_title`, `ad_botton_link`) VALUES
-(1, 'Robot Operating\r\n							System (ROS): The Complete Reference (Volume 2)', '', 'images/rosbook2.jpg', 'http://www.springer.com/us/book/9783319549262', 'PURCHASE', 'http://www.springer.com/us/book/9783319549262'),
-(2, 'RIOT Organizes the Second Drone Pilot Certificate Program', 'at Prince Sultan University, Riyadh, 							January 2018', 'images/drone-training.png', '', 'REGISTER NOW', '');
+INSERT INTO `ads` (`ad_id`, `ad_background`, `ad_title`, `ad_info`, `ad_image`, `ad_image_link`, `ad_botton_title`, `ad_botton_link`) VALUES
+(1, 'images/profile-background-psu.jpg', 'Robot Operating\r\n							System (ROS): The Complete Reference (Volume 2)', '', 'images/rosbook2.jpg', 'http://www.springer.com/us/book/9783319549262', 'PURCHASE', 'http://www.springer.com/us/book/9783319549262'),
+(2, 'images/profile-background-psu.jpg', 'RIOT Organizes the Second Drone Pilot Certificate Program', 'at Prince Sultan University, Riyadh, 							January 2018', 'images/drone-training.png', '', 'REGISTER NOW', '');
 
 -- --------------------------------------------------------
 
@@ -147,24 +148,6 @@ INSERT INTO `gallery` (`content_id`, `content_name`, `content_type`, `content_li
 -- --------------------------------------------------------
 
 --
--- Table structure for table `main_images`
---
-
-CREATE TABLE `main_images` (
-  `logo` text NOT NULL,
-  `background` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `main_images`
---
-
-INSERT INTO `main_images` (`logo`, `background`) VALUES
-('images/riotu-logo-w.png', 'images/profile-background-psu.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `main_info`
 --
 
@@ -193,17 +176,17 @@ CREATE TABLE `news` (
   `news_id` int(11) NOT NULL,
   `news_picture` text,
   `news_name` varchar(50) NOT NULL,
-  `news_date` date NOT NULL,
-  `news_discription` text NOT NULL
+  `news_date` varchar(50) NOT NULL,
+  `news_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_discription`) VALUES
-(1, NULL, 'New Grant Attracted', '2017-11-01', 'The RIOTU Lab would like to thank <a href=\"http://www.gaitech.com/\">Gaitech Robotics (China)</a> for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics.\r\n\r\n'),
-(2, NULL, 'Open Positions for Students', '2017-11-01', 'The RIOTU Lab is looking for talented and skilled students to join the research activities of the lab. We look for studengs with strong skills in programming and software development. Knowledge of drones, ROS, and Robotics will be an added value.');
+INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_description`) VALUES
+(1, NULL, 'New Grant Attracted', 'Nov 1, 2017', 'The RIOTU Lab would like to thank <a href=\"http://www.gaitech.com/\">Gaitech Robotics (China)</a> for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics.\r\n\r\n'),
+(2, NULL, 'Open Positions for Students', 'Nov 1, 2017', 'The RIOTU Lab is looking for talented and skilled students to join the research activities of the lab. We look for studengs with strong skills in programming and software development. Knowledge of drones, ROS, and Robotics will be an added value.');
 
 -- --------------------------------------------------------
 
@@ -214,6 +197,7 @@ INSERT INTO `news` (`news_id`, `news_picture`, `news_name`, `news_date`, `news_d
 CREATE TABLE `newsletter` (
   `newsletter_id` int(11) NOT NULL,
   `newsletter_date` varchar(20) NOT NULL,
+  `newsletter_image` text NOT NULL,
   `newsletter_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -221,8 +205,8 @@ CREATE TABLE `newsletter` (
 -- Dumping data for table `newsletter`
 --
 
-INSERT INTO `newsletter` (`newsletter_id`, `newsletter_date`, `newsletter_link`) VALUES
-(1, 'APRIL 2017', 'resources/newsletter1.pdf');
+INSERT INTO `newsletter` (`newsletter_id`, `newsletter_date`, `newsletter_image`, `newsletter_link`) VALUES
+(1, 'APRIL 2017', 'images/newsletter1.png', 'resources/newsletter1.pdf');
 
 -- --------------------------------------------------------
 
