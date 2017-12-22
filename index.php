@@ -15,6 +15,9 @@ include_once 'include/headers_links.php';
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
+	<?php 
+	include 'include/dbconfig.php';
+	?>
 	<?php
 	include_once 'include/nav_bar_black.php';
 	?>
@@ -22,270 +25,110 @@ include_once 'include/headers_links.php';
 		<!-- SLIDER -->
 		<section id="slider-fullwidth" class="rev_slider no-padding">
 			<ul>
-				<li data-transition="crossfade"><img
-					src="images/profile-background-psu.jpg" data-bgfit="cover"
+
+				<?php 
+			$sql = 'SELECT * FROM  ads';
+			$result = $dbconn->query($sql);
+			if ($result->num_rows >= 1) {
+				while ($row = $result->fetch_assoc()) {
+					echo'<li data-transition="crossfade">';
+					echo'<img src="'.$row["ad_background"].'" data-bgfit="cover"
 					data-bgposition="center center" data-bgrepeat="no-repeat"
-					alt="Slide">
-					<div class="tp-caption tp-shape tp-shapewrapper " data-width="full"
+					alt="Slide">';
+					echo'<div class="tp-caption tp-shape tp-shapewrapper " data-width="full"
 						data-height="full" data-basealign="slide"
 						data-transform_in="o:0;s:800;e:Power3.easeInOut;"
 						data-transform_idle="o:1"
-						data-transform_out="o:0;s:1500;e:Power3.easeInOut;" data-start="0">
-					</div>
-					<div
-						class="tp-caption tp-resizeme lead-text light-text text-center"
+						data-transform_out="o:0;s:1500;e:Power3.easeInOut;" data-start="0">';
+					echo'</div><div class="tp-caption tp-resizeme lead-text light-text text-center"
 						data-x="center" data-y="center" data-hoffset="0"
 						data-voffset="-100" data-transform_in="o:0;y:-20;s:2000;"
 						data-transform_idle="o:1;"
 						data-transform_out="o:0;s:1500;e:Power3.easeInOut;"
-						data-start="1300">
-						<h1 class="heading" style="margin-top: 120px">RIOT Organizes the
-							Second Drone Pilot Certificate Program</h1>
-						<p class="section-lead">at Prince Sultan University, Riyadh,
-							January 2018</p>
-						<a href='http://www.springer.com/us/book/9783319549262'><img
-							src="images/drone-training.png" class="image-responsive center">
-						</a>
-					</div>
-					<div class="tp-caption tp-resizeme" data-x="center" data-y="center"
+						data-start="1300">';
+					echo'<h1 class="heading" style="margin-top: 120px">'.$row["ad_title"].'</h1>';
+					echo'<p class="section-lead">'.$row["ad_info"].'</p>';
+					echo'<a href="'.$row["ad_image_link"].'"><img src="'.$row["ad_image"].'" class="image-responsive center">';
+					echo'</a></div><div class="tp-caption tp-resizeme" data-x="center" data-y="center"
 						data-hoffset="0" data-voffset="[150, 170, 180, 200]"
 						data-transform_in="o:0;y:50;s:2000;" data-transform_idle="o:1;"
 						data-transform_out="o:0;y:0;s:1500;e:Power3.easeInOut;"
-						data-start="1900" style="margin-top: 100px"
-						onclick="alert('coming soon');">
-						<a href="#" class="btn btn-primary btn-lg"><i
-							class="fa fa-shopping-cart"></i> REGISTER NOW</a>
-					</div></li>
-				<li data-transition="crossfade"><img
-					src="images/profile-background-psu.jpg" data-bgfit="cover"
-					data-bgposition="center center" data-bgrepeat="no-repeat"
-					alt="Slide">
-					<div class="tp-caption tp-shape tp-shapewrapper " data-width="full"
-						data-height="full" data-basealign="slide"
-						data-transform_in="o:0;s:800;e:Power3.easeInOut;"
-						data-transform_idle="o:1"
-						data-transform_out="o:0;s:1500;e:Power3.easeInOut;" data-start="0">
-					</div>
-					<div
-						class="tp-caption tp-resizeme lead-text light-text text-center"
-						data-x="center" data-y="center" data-hoffset="0"
-						data-voffset="-100" data-transform_in="o:0;y:-20;s:2000;"
-						data-transform_idle="o:1;"
-						data-transform_out="o:0;s:1500;e:Power3.easeInOut;"
-						data-start="1300">
-						<h2>Get your copy of the book</h2>
-						<h1 class="heading" style="margin-top: 120px">Robot Operating
-							System (ROS): The Complete Reference (Volume 2)</h1>
-						<a href='http://www.springer.com/us/book/9783319549262'><img
-							src="images/rosbook2.jpg" class="image-responsive center"> </a>
+						data-start="1900" style="margin-top: 100px"';
 
-					</div>
-					<div class="tp-caption tp-resizeme" data-x="center" data-y="center"
-						data-hoffset="0" data-voffset="[150, 170, 180, 200]"
-						data-transform_in="o:0;y:50;s:2000;" data-transform_idle="o:1;"
-						data-transform_out="o:0;y:0;s:1500;e:Power3.easeInOut;"
-						data-start="1900" style="margin-top: 100px"
-						onclick="alert('coming soon');">
-						<a href="http://www.springer.com/us/book/9783319549262"
-							class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart"></i>
-							PURCHASE</a>
-					</div></li>
-
-
+						echo 'onclick="alert('."'coming soon'".');">';
+					echo'<a href="'.$row["ad_botton_link"].'" class="btn btn-primary btn-lg">';
+					echo'<i class="fa fa-shopping-cart"></i>'.$row["ad_botton_title"].'</a>';
+					echo'</div></li>';
+				}
+			}	
+		?>
 			</ul>
 		</section>
-		<!-- END SLIDER -->
-		<!-- CONTENT SLIDER -->
-		<!--
-<section>
-<div class="container">
-<div class="section-heading section-heading-center">
-<h2 class="heading">WHY BRAVANA</h2>
-<p class="section-lead">Appropriately exploit 24/7 leadership
-skills without user friendly leadership.</p>
-</div>
-<div id="content-slider2" class="owl-carousel carousel-content">
-<div>
-<div class="media">
-<div class="media-left">
-<img src="theme/assets/img/content-slider-img2.png" alt="">
-</div>
-<div class="media-body">
-<h2>Multipurpose</h2>
-<p>Quickly myocardinate strategic technologies with
-extensible e-tailers. Competently restore fully researched.</p>
-<p>Quickly re-engineer next-generation services for
-standardized e-services. Continually streamline go forward
-ideas for cooperative interfaces. Collaboratively.</p>
-<p>Quickly optimize open-source e-services with transparent
-communities. Completely enable best-of-breed results with
-mission-critical materials. Uniquely revolutionize user-centric
-human capital vis-a-vis just in time web services. Seamlessly
-strategize client-centric testing procedures before
-user-centric methods of empowerment. Rapidiously pontificate
-cost effective portals after extensible web-readiness.</p>
-<a href="#">Learn More &nbsp;<i class="fa fa-angle-right"></i></a>
-</div>
-</div>
-</div>
-<div>
-<div class="media">
-<div class="media-left">
-<img src="theme/assets/img/content-slider-img3.png" alt="">
-</div>
-<div class="media-body">
-<h2>Predefined Color Skins</h2>
-<p>Synergistically e-enable low-risk high-yield niche
-markets without real-time e-business. Interactively redefine
-24/365 channels after customized convergence. Interactively
-synthesize B2C users after global networks. Phosfluorescently
-whiteboard bricks-and-clicks services after B2B schemas.
-Enthusiastically create leveraged channels after visionary ROI.</p>
-<p>Quickly optimize open-source e-services with transparent
-communities. Completely enable best-of-breed results with
-mission-critical materials. Uniquely revolutionize user-centric
-human capital vis-a-vis just in time web services.</p>
-<a href="#">Learn More &nbsp;<i class="fa fa-angle-right"></i></a>
-</div>
-</div>
-</div>
-<div>
-<div class="media">
-<div class="media-left">
-<img src="theme/assets/img/content-slider-img.png" alt="Bravana">
-</div>
-<div class="media-body">
-<div
-class="icon-info icon-info-left icon-info-big margin-bottom-30">
-<i
-class="icon icon_pencil-edit ico-styled-square-solid bg-primary"></i>
-<div class="text">
-<h2 class="title">Carefully Handcrafted</h2>
-<p>Holisticly harness just in time technologies via
-corporate scenarios. Intrinsicly predominate ubiquitous
-outsourcing through an expanded array of functionalities.</p>
-</div>
-</div>
-<div
-class="icon-info icon-info-left icon-info-big margin-bottom-30">
-<i class="icon icon_mobile ico-styled-square-solid bg-primary"></i>
-<div class="text">
-<h2 class="title">Mobile Friendly</h2>
-<p>Holisticly harness just in time technologies via
-corporate scenarios. Intrinsicly predominate ubiquitous
-outsourcing through an expanded array of functionalities.</p>
-</div>
-</div>
-<div
-class="icon-info icon-info-left icon-info-big margin-bottom-30">
-<i class="icon icon_like ico-styled-square-solid bg-primary"></i>
-<div class="text">
-<h2 class="title">Slider Revolution</h2>
-<p>Holisticly harness just in time technologies via
-corporate scenarios. Intrinsicly predominate ubiquitous
-outsourcing through an expanded array of functionalities.</p>
-</div>
-</div>
-<a href="#">Learn More &nbsp;<i class="fa fa-angle-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
--->
-		<!-- END CONTENT SLIDER -->
 		<!-- FEATURES -->
 		<section>
 			<div class="container">
+				<?php 
+	$sql = 'SELECT * FROM  main_info';
+	$result = $dbconn->query($sql);
+	if ($result->num_rows >= 1) {
+		while ($row = $result->fetch_assoc()) {
+			echo '<div class="row">';
+			echo '<div class="col-md-12">';
+			echo '<div class="icon-info icon-info-left">';
+			echo '<i class="'.$row["main_info_class"].'"></i>';
+			echo '<div class="text">';
+			echo '<h2 class="title museosans " style="font-size: 160%;">'.$row["main_info_title"];
 
-				<div class="row">
+							if($row["main_info_id"] == 1){ ////Publications
+								echo '</h2>';
+								$sql1 = "SELECT * FROM publications ORDER BY str_to_date(
+								date,'%M %Y') DESC LIMIT 3";
+						        $result1 = $dbconn->query($sql1);
+						        if ($result1->num_rows >= 1) {
+						          while ($row1 = $result1->fetch_assoc()) {
+									echo '<div class="publication banner_news">';
+									echo '<b><a href="'.$row1["publication_link"].'">';
+									echo $row1["publication_name"].'</a></b><br>';
+									echo $row1["director"].'<br><b>'.$row1["reference"].'</b>, '.$row1["date"].'</div>';
+								  }
+								}
+							}
+							else if($row["main_info_id"] == 2){ ////News
+								echo '</h2>';
+								echo '<div class="row">';
+								$sql2 = 'SELECT * FROM  news';
+						        $result2 = $dbconn->query($sql2);
+						        //$count=0;
+						        if ($result2->num_rows >= 1) {
+						          while ($row2 = $result2->fetch_assoc()) {
+									echo '<div class="col-lg-6 col-md-6 col-sm-12 col-xm-12 banner_news">';
+									echo '<h4>'.$row2["news_name"].'</h4>';
+									echo '<p><a href="#">Nov 1, 2017</a> '.$row2["news_description"].'</p><br>';
+									echo '</div>';
+								   }
+								}
+								echo '</div>';							
+							}
+							else if($row["main_info_id"] == 3){	//Newsletter								
+						        $sql3 = "SELECT * FROM  newsletter";
+						        $result3 = $dbconn->query($sql3);
+						          $row3 = $result3->fetch_assoc(); 
+								 echo ', '.$row3["newsletter_date"].'</h2>';
+								 echo '<div class="row">';
+								 echo '<div class="col-lg-8">';
+								 echo '<a href="'.$row3["newsletter_link"].'">';
+								 echo '<img src="'.$row3["newsletter_image"].'" width="60%" class="image-responsive center"> </a>';
+								 echo '</div>';			
+								 }
 
-					<div class="col-md-12">
-						<div class="icon-info icon-info-left">
-							<i class="icon icon_book_alt ico-styled-md text-primary"></i>
-							<div class="text">
-								<h2 class="title museosans " style="font-size: 160%;">LATEST
-									PUBLICATIONS</h2>
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
 
-								<div class="publication banner_news">
-									<b><a href='http://ieeexplore.ieee.org/document/7964096/'>A Service- Oriented Cloud-Based Management System for the Internet-of-Drones</a> </b> <br>A. Koubaˆa, B. Qureshi, M.-F. Sriti, Y. Javed, and E. Tovar<br> <b>17th IEEE International Conference on Autonomous Robot Systems and Competitions (ICARSC 2017)</b>, May 2017
-								</div>
-								<div class="publication banner_news">
-									<b><a href='https://link.springer.com/chapter/10.1007%2F978-3-319-54927-9_8'>ROSLink:Bridging ROS with the Internet-of-Things for Cloud Robotics</a> </b> <br>A.Koubaˆa,M.Alajlan,andB.Qureshi <br> <b>in Springer Book of Robot Operating System (ROS), Volume 2, </b>,May 2017
-								</div>
-								<div class="publication banner_news">
-									<b><a href='http://www.springer.com/us/book/9783319549262'>Robot
-											Operating System (ROS): The Complete Reference (Volume 2)</a>
-									</b><br>Anis Koubaa (Editor) <br> <b>Springer</b>, Volume 2,
-									707 Pages, ISBN 978-3-319-54926-2, 2017 <a
-										href='http://www.springer.com/us/book/9783319549262'> </a>
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="icon-info icon-info-left">
-							<i class="icon icon_lightbulb ico-styled-md text-primary"></i>
-							<div class="text">
-								<h2 class="title" style="font-size: 160%;">LATEST NEWS</h2>
-
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-12 col-xm-12 banner_news">
-									<h4>New Grant Attracted</h4>
-										<p>
-											<a href='#'>Nov 1, 2017</a> The RIOTU Lab would like to thank <a href="http://www.gaitech.com/">Gaitech Robotics (China)</a> for the research grant provided to the lab, in the context of R&D collaboration MoU established between Prince Sultan University and Gaitech Robotics. 
-										</p>
-										<br>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-12 col-xm-12 banner_news">
-									<h4>Open Positions for Students</h4>
-										<p>
-											<a href='#'>Nov 1, 2017</a> The RIOTU Lab  is looking for talented and skilled students to join the research activities of the lab. 
-											We look for studengs with strong skills in programming and software development. Knowledge of drones, ROS, and Robotics will be an added value. 
-										</p>
-										
-										<br>
-									</div>
-									
-									
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-
-					<div class="col-md-12">
-						<div class="icon-info icon-info-left">
-							<i class="icon icon_gift ico-styled-md text-primary"></i>
-							<div class="text">
-								<h2 class="title" style="font-size: 160%;">NEWSLETTER, APRIL
-									2017</h2>
-
-
-
-								<div class="row">
-									<div class="col-lg-8">
-										<a href='resources/newsletter1.pdf'><img
-											src="images/newsletter1.png" width="60%"
-											class="image-responsive center"> </a>
-
-									</div>
-									<div class="col-lg-4"></div>
-								</div>
-
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-
+		}
+	}
+				?>
 
 			</div>
 		</section>
