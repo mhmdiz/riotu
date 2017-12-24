@@ -13,11 +13,12 @@ include_once 'include/headers_links.php';
 </head>
 
 <body>
+	<?php
+    include 'include/dbconfig.php';
+    session_start();
+    ?>
 	<!-- WRAPPER -->
 	<div id="wrapper">
-	<?php 
-	include 'include/dbconfig.php';
-	?>
 	<?php
 	include_once 'include/nav_bar_black.php';
 	?>

@@ -16,11 +16,13 @@
 </head>
 
 <body>
+	<?php
+	include 'include/dbconfig.php';
+	session_start();
+	?>
+	<div id="wrapper">
 	<!-- WRAPPER -->
 	<div id="wrapper">
-	<?php 
-	include 'include/dbconfig.php';
-	 ?>
 	<?php include_once 'include/nav_bar.php';?>
 
 		<!-- PAGE HEADER DEFAULT -->

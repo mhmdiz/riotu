@@ -16,11 +16,12 @@ include_once 'include/utils.php';
 </head>
 
 <body>
-	<!-- WRAPPER -->
-	<div id="wrapper">
 	<?php
     include 'include/dbconfig.php';
+    session_start();
     ?>
+	<!-- WRAPPER -->
+	<div id="wrapper">
 	<?php
 	include_once 'include/nav_bar.php';
 	?>

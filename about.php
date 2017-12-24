@@ -14,11 +14,13 @@ include_once 'include/headers_links.php';
 </head>
 
 <body>
-	<!-- WRAPPER -->
-	<div id="wrapper">
 	<?php 
 	include 'include/dbconfig.php';
+	session_start();
 	 ?>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+
 	<?php
 	include_once 'include/nav_bar.php';
 	?>
@@ -39,6 +41,9 @@ include_once 'include/headers_links.php';
 		<div class="page-content no-margin-bottom">
 			<div class="container">
 				<?php
+								$flag = true;
+								if ($flag)
+									$edit = 'contenteditable="true"';
 						        $sql = "SELECT * FROM  about";
 						        $result = $dbconn->query($sql);
 						        if ($result->num_rows >= 1) {
@@ -48,9 +53,9 @@ include_once 'include/headers_links.php';
 						          echo '<a href="#">';
 						          echo '<img src="'.$row["about_picture"].'" width="70%" class="image-responsive center">';
 						          echo '</a> <br> <br> <br>';
-						          echo '<p class="paragraph_large">'.$row["about_description"].'</p>';
+						          echo '<p id="" class="paragraph_large editable">'.$row["about_description"].'</p>';
 						          echo '<h2 class="section-heading">VISION</h2>';
-						          echo '<p class="paragraph_large">'.$row["about_vision"].'</p>';
+						          echo '<p id="about_vision" class="paragraph_large editable" '.$edit.'>'.$row["about_vision"].'</p>';
 						          echo '<h2 class="section-heading">MISSION</h2>';
 						          echo '<ul class="paragraph_large">';
 						      	}		
@@ -65,6 +70,7 @@ include_once 'include/headers_links.php';
 						          	$count++;
 						          }
 						          }
+						           echo '<p align="right"><a href="index.php" class="as-button"><span class="btn btn-primary">Edit</span></a></p>';
 						      	}
 						      	echo '</ul>';
 						      	echo '<h2 class="section-heading">OBJECTIVES</h2>';
@@ -97,6 +103,7 @@ include_once 'include/headers_links.php';
 	<script src="theme/assets/js/bootstrap.min.js"></script>
 	<script src="theme/assets/js/plugins/easing/jquery.easing.min.js"></script>
 	<script src="theme/assets/js/bravana.js"></script>
+	<script src="js/about.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
