@@ -34,16 +34,24 @@
 <h3 class='stale_gray'>Books</h3>
 
 				<?php
+				$flag = true;
+				if ($flag){
+					$edit = 'contenteditable="true"';
+				} else {
+					$edit = '';
+				}
+
 				$sql = "SELECT * FROM publications WHERE publication_type = 'book'";
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						echo'<div class="publication ">';
-						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
-						echo "<br>".$row["director"];
-						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
-						echo "<br><b class='indexing'>".$row['website']."</b>";
+						$pid = $row["publication_id"];
+						echo'<div class="publication" >';
+						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
+						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
+						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
+						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
 						echo'</div>';
 					}
 				} else {
@@ -61,11 +69,12 @@
 				if ($result->num_rows >= 1) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						echo'<div class="publication ">';
-						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
-						echo "<br>".$row["director"];
-						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
-						echo "<br><b class='indexing'>".$row['website']."</b>";
+						$pid = $row["publication_id"];
+						echo'<div class="publication" >';
+						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
+						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
+						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
+						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
 						echo'</div>';
 					}
 				} else {
@@ -81,11 +90,12 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
-						echo'<div class="publication ">';
-						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
-						echo "<br>".$row["director"];
-						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
-						echo "<br><b class='indexing'>".$row['website']."</b>";
+						$pid = $row["publication_id"];
+						echo'<div class="publication" >';
+						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
+						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
+						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
+						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
 						echo'</div>';
 					}
 				} else {
@@ -102,11 +112,12 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
-						echo'<div class="publication ">';
-						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
-						echo "<br>".$row["director"];
-						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
-						echo "<br><b class='indexing'>".$row['website']."</b>";
+						$pid = $row["publication_id"];
+						echo'<div class="publication" >';
+						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
+						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
+						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
+						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
 						echo'</div>';
 					}
 				} else {
@@ -144,19 +155,36 @@
 	<script src="theme/assets/js/bootstrap.min.js"></script>
 	<script src="theme/assets/js/plugins/easing/jquery.easing.min.js"></script>
 	<script src="theme/assets/js/bravana.js"></script>
+	<script type="text/javascript">
+		var editableList = document.getElementsByClassName("editable");
+		for (var i = 0; i < editableList.length; i++) {
+		    editableList[i].addEventListener('input', function() {
+		    	var id = this.getAttribute('id');
+		    	var content = this.textContent;
+
+		    	var xhttp = new XMLHttpRequest();
+				
+				xhttp.open("GET", "submitpublications.php?pid=" + id.split("_")[0] + "&field=" + id.split("_")[1] + "&content='" + content + "'", true);
+				xhttp.onreadystatechange = success;
+				xhttp.send(null);
+			});
+		}
+
+		function success(){
+		}
+	</script>
 
 
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-54522619-4', 'auto');
+	  ga('send', 'pageview');
 
-  ga('create', 'UA-54522619-4', 'auto');
-  ga('send', 'pageview');
-
-</script>
+	</script>
 
 </body>
 
