@@ -80,12 +80,20 @@
 				if ($result->num_rows >= 1) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
+						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
+					}else{
+						echo'<div class="publication ">';
+ 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
+ 						echo "<br>".$row["director"];
+ 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
+ 						echo "<br><b class='indexing'>".$row['website']."</b>";
+					}
 						echo'</div>';
 					}
 				} else {
@@ -101,12 +109,20 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
+						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
+					}else{
+						echo'<div class="publication ">';
+ 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
+ 						echo "<br>".$row["director"];
+ 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
+ 						echo "<br><b class='indexing'>".$row['website']."</b>";
+					}
 						echo'</div>';
 					}
 				} else {
@@ -123,12 +139,22 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
+						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
+						}else{
+							echo'<div class="publication ">';
+ 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
+ 						echo "<br>".$row["director"];
+ 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
+ 						echo "<br><b class='indexing'>".$row['website']."</b>";
+
+
+						}
 						echo'</div>';
 					}
 				} else {
