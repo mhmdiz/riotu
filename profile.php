@@ -24,8 +24,13 @@
 <?php
     if (!(isset($_SESSION["username"]))){
       header('location: index.php');
-  }
+  } 
+        if(!(isset($_SESSION["edit"]))){
         $_SESSION["edit"] = 0;
+      }
+        if(isset($_POST["edit"])){
+          $_SESSION["edit"] = $_POST["edit"];
+        }
         $edit = array(array(0,"Inactive"),array(1,"Active"));
         $sql = "SELECT * FROM users WHERE username = '" . $_SESSION["username"] . "'";
         $result = $dbconn->query($sql);
@@ -55,9 +60,19 @@
 
 <div class="row">
   <p>You are <span class="text-danger"><?php echo $_SESSION["role"]?></span></p>
-  <p>Editing: is <span id="edit"><?php echo $edit[($_SESSION["edit"])][1]; ?></span> <p>
-  <span class="btn btn-success" onclick="edit('1')" >Activate</span>
-  <span class="btn btn-danger" onclick="edit('0')">Deactivate</span>
+    <?php
+    if($_SESSION["role"]=="admin"){
+  echo '<p>Editing: is <span id="edit"> '.$edit[($_SESSION["edit"])][1].'.</span> <p>';
+  echo '<form action='.$_SERVER["PHP_SELF"].' method="POST">';
+  echo '<button type="submit" class="btn btn-success btn-lg" name="edit" value="1"><i></i> Activate</button>';
+  echo '<button type="submit" class="btn btn-danger btn-lg" name="edit" value="0"><i></i> Deactivate</button>';
+  echo '</form>';
+}
+?>
+    
+    
+    
+    <form action=<?php echo $_SERVER["PHP_SELF"];?> method="get">
   <div class="well center-block">
     <h3 class="section-heading">Information:</h3>
           <form class="form-horizontal label-right"
