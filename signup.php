@@ -26,19 +26,19 @@
   if (isset($_SESSION["username"])){
     header('location: index.php');
   }
-    if (! isset($_GET["signup-firstname"]) ||
-         ! isset($_GET["signup-lastname"]) ||
-          ! isset($_GET["signup-username"]) ||
-           ! isset($_GET["signup-email"]) ||
-             ! isset($_GET["signup-password"])) {
+    if (! isset($_POST["signup-firstname"]) ||
+         ! isset($_POST["signup-lastname"]) ||
+          ! isset($_POST["signup-username"]) ||
+           ! isset($_POST["signup-email"]) ||
+             ! isset($_POST["signup-password"])) {
 
     } else {
 
-        $firstname = $_GET["signup-firstname"];
-        $lastname = $_GET["signup-lastname"];
-        $username = $_GET["signup-username"];
-        $email = $_GET["signup-email"];
-        $password = $_GET["signup-password"];
+        $firstname = $_POST["signup-firstname"];
+        $lastname = $_POST["signup-lastname"];
+        $username = $_POST["signup-username"];
+        $email = $_POST["signup-email"];
+        $password = $_POST["signup-password"];
         $date = date("Y-m-d");
         $role = "member";
         
@@ -80,7 +80,7 @@
   <div class="well well-form-wrapper center-block">
 <h3 class="section-heading">Sign Up</h3>
           <form class="form-horizontal label-left"
-            action=<?php echo $_SERVER["PHP_SELF"];?> method="get">
+            action=<?php echo $_SERVER["PHP_SELF"];?> method="POST">
             <div class="form-group">
               <label for="signup-firstname" class="col-sm-3 control-label">First Name:</label>
               <div class="col-sm-9">

@@ -27,10 +27,10 @@
       header('location: index.php');
   }
     
-    if (! isset($_GET["username"]) || ! isset($_GET["password"])) {} else {
+    if (! isset($_POST["username"]) || ! isset($_POST["password"])) {} else {
         
-        $username = $_GET["username"];
-        $password = $_GET["password"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
         
 
 
@@ -86,14 +86,14 @@
 
           <?php
 
-        if ( isset($_GET["username"])){
+        if ( isset($_POST["username"])){
            if ($result->num_rows != 1){
           echo "<p class='text-danger'> Incorrect username and/or password</p>";
       }
     }
           ?> 
           <form class="form-horizontal label-left"
-            action=<?php echo $_SERVER["PHP_SELF"];?> method="get">
+            action=<?php echo $_SERVER["PHP_SELF"];?> method="POST">
             <div class="form-group">
               <label for="signin-username" class="col-sm-3  control-label">Username:</label>
               <div class="col-sm-9">
