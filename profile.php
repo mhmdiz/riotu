@@ -35,6 +35,30 @@
         $sql = "SELECT * FROM users WHERE username = '" . $_SESSION["username"] . "'";
         $result = $dbconn->query($sql);
           $row = $result->fetch_assoc();
+
+
+          //UPDATE PROFILE
+          if(isset($_POST['firstname'])){
+          $firstname = $_POST['firstname'];
+          $lastname = $_POST['lastname'];
+          $email = $_POST['email'];
+          $password1 = $_POST['password2'];
+          $birth_date = $_POST['birthdate'];
+          $phone = $_POST['phone'];
+          $office_phone = $_POST['officephone'];
+          $address = $_POST['address'];
+          $city = $_POST['city'];
+          $country = $_POST['country'];
+          $website = $_POST['website'];
+          $username = $row['username'];
+          $sql2 = 'UPDATE users SET firstname = "'.$firstname.'" , lastname = "'.$lastname.'" , email = "'.$email.'"';
+          if($password1 != ""){
+            $sql2 = $sql2 . ' , password =  "'. $password1.'"';
+        }
+            $sql3 = $sql2 . ' , birth_date = "'.$birth_date.'" , phone = '.$phone.' , office_phone = "'.$office_phone.'" , address = "'.$address.'" , city = "'.$city.'" , country = "'.$country.'" , website = "'.$website.'" WHERE username = "'.$username.'" ';
+          $result2 = $dbconn->query($sql3);
+        } else{}
+
     ?>
 <div id="wrapper">
     <?php
@@ -72,11 +96,11 @@
     
     
     
-    <form action=<?php echo $_SERVER["PHP_SELF"];?> method="get">
+    <form action=<?php echo $_SERVER["PHP_SELF"];?> method="POST">
   <div class="well center-block">
     <h3 class="section-heading">Information:</h3>
           <form class="form-horizontal label-right"
-            action=<?php echo $_SERVER["PHP_SELF"];?> method="get">
+            action=<?php echo $_SERVER["PHP_SELF"];?> method="POST">
             <div class="form-group">
               <label for="firstname" class="col-sm-3 control-label">First Name:</label>
               <div class="col-sm-9">
@@ -102,13 +126,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-3  control-label">Current Password:</label>
+                <label for="password1" class="col-sm-3  control-label">New Password:</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="password" name="password" value="">
+                  <input type="password" class="form-control" id="password1" name="password1" value="">
                 </div>
             </div>
                 <div class="form-group">
-                <label for="password2" class="col-sm-3  control-label">New Password:</label>
+                <label for="password2" class="col-sm-3  control-label">Confirm Password:</label>
                 <div class="col-sm-9">
                   <input type="password" class="form-control" id="password2" name="password2" value="">
                 </div>
@@ -134,7 +158,7 @@
             <div class="form-group">
               <label for="address" class="col-sm-3 control-label">Address:</label>
               <div class="col-sm-9">
-                <textarea class="form-control" id="address" name="address" value=<?php echo $row["address"];?>></textarea>
+                <input class="form-control" id="address" name="address" value=<?php echo $row["address"];?>></input>
               </div>
             </div>
             <div class="form-group">
@@ -156,7 +180,7 @@
               </div>
             </div>
 
-              <button type="submit" class="btn btn-primary btn-lg center-block" onclick="done()"><i></i> Update</button>
+              <button type="submit" class="btn btn-primary btn-lg center-block" onclick="update()"><i></i> Update</button>
             </form>
           </div>
 
@@ -201,6 +225,11 @@
     else{
       document.getElementById("edit").innerHTML = "<span class='text-danger'>Inactive</span>";
     }
+
+
+  }
+  function update(){
+
 
 
   }
