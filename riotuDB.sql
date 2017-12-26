@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 22, 2017 at 07:55 PM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 26, 2017 at 06:16 PM
 -- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- PHP Version: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `riotuDB`
+-- Database: `riotudb`
 --
 
 -- --------------------------------------------------------
@@ -331,6 +331,13 @@ INSERT INTO `realresearch_info` (`realresearch_points_id`, `realresearch_points`
 (1, 'Integration of robots/drones into the IoT and the Cloud'),
 (1, 'Communication and Networking for the IoT'),
 (1, 'AI Algorithms for Planning in Robotics'),
+(1, 'Design of Unmanned Aerial Vehicles (UAVs) and their applications'),
+(1, 'Software Engineering for Cloud Robotics\r\n'),
+(1, 'Big data analytics for IoT and Robotics applications'),
+(1, 'Security and safety of drones'),
+(1, 'Integration of robots/drones into the IoT and the Cloud'),
+(1, 'Communication and Networking for the IoT'),
+(1, 'AI Algorithms for Planning in Robotics'),
 (1, 'Design of Unmanned Aerial Vehicles (UAVs) and their applications');
 
 -- --------------------------------------------------------
@@ -341,11 +348,11 @@ INSERT INTO `realresearch_info` (`realresearch_points_id`, `realresearch_points`
 
 CREATE TABLE `research` (
   `research_id` int(11) NOT NULL,
-  `research_name` varchar(50) NOT NULL,
+  `research_title` varchar(50) NOT NULL,
+  `researher_name` varchar(200) NOT NULL,
+  `researcher_email` text NOT NULL,
   `research_type` varchar(50) NOT NULL,
   `reference` varchar(100) NOT NULL,
-  `reviewer` varchar(50) NOT NULL,
-  `researcher` varchar(50) NOT NULL,
   `research_document` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -529,7 +536,7 @@ ALTER TABLE `realresearch`
 -- AUTO_INCREMENT for table `research`
 --
 ALTER TABLE `research`
-  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `research_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
