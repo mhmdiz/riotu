@@ -16,11 +16,13 @@
 </head>
 
 <body>
+	<?php
+	include 'include/dbconfig.php';
+	session_start();
+	?>
+	<div id="wrapper">
 	<!-- WRAPPER -->
 	<div id="wrapper">
-	<?php 
-	include 'include/dbconfig.php';
-	 ?>
 	<?php include_once 'include/nav_bar.php';?>
 
 		<!-- PAGE HEADER DEFAULT -->
@@ -56,14 +58,15 @@
 						          		while($row2 = $result2->fetch_assoc()){
 						       			    echo '<li>'.$row2["realresearch_points"].'</li>';
 										}
-										 
 									}
 									echo '</ul>';
 									echo '<br>';
 									echo '</div>';
 								}
-									
-									 echo '<p align="middle"><a href="sumresreche.php" class="as-button"><span class="btn btn-primary">Submit Your Research</span></a></p>';
+									if((isset($_SESSION["username"]))){
+									 echo '<p align="middle"><a href="submitresearch.php" class="as-button"><span class="btn btn-primary">Submit Your Research</span></a></p>';
+
+									}
 									echo '</div>';
 							}
 
