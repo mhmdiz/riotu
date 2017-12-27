@@ -96,11 +96,11 @@
 		          	echo '<p id="'.$pid.'-person_major" class="short-bio keywords editable" '.$edit.'>'.$row["person_major"].'</p>';
 		          	echo '<address class="contact-info">';
 		          	echo '<p class="sm">';
-		          	echo '<i id="'.$pid.'-person_location" class="icon icon_pin_alt ico-styled text-primary editable" '.$edit.'></i>'.$row["person_location"].'</p>';
+		          	echo '<i class="icon icon_pin_alt ico-styled text-primary"></i><span id="'.$pid.'-person_location" class="editable" '.$edit.'>'.$row["person_location"].'</span></p>';
 		          	echo '<p class="sm">';
-		          	echo '<i id="'.$pid.'-person_phone" class="icon icon_phone ico-styled text-primary editable" '.$edit.'></i>'.$row["person_phone"].'</p><p>';
+		          	echo '<i class="icon icon_phone ico-styled text-primary"></i><span id="'.$pid.'-person_phone" class="editable" '.$edit.'>'.$row["person_phone"].'</span></p><p>';
 		          	echo '<i class="icon icon_mail_alt ico-styled text-primary"></i>';
-		          	echo '<a id="'.$pid.'-person_email" class="editable" href="mailto:'.$row["person_email"].'" '.$edit.'>'.$row["person_email"].'</a></p></address>';
+		          	echo '<a id="'.$pid.'-person_email" class="editable" '.$edit.' href="mailto:'.$row["person_email"].'">'.$row["person_email"].'</a></p></address>';
 		          	echo '<ul class="list-inline social-icons social-icons-small">';
 		          	echo '<li><a href="'.$row["social_facebook"].'" class="facebook-bg-hover"><i class="fa fa-facebook"></i> </a></li>';
 		          	echo '<li><a href="'.$row["social_website"].'" class="dribbble-bg-hover"><i class="fa fa-dribbble"></i> </a></li><li>';
