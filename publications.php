@@ -19,13 +19,11 @@
 	<div id="wrapper">
 	<?php
 	include 'include/dbconfig.php';
-	session_start();
+	//session_start();
 	?>
 
 	<?php
 	include_once 'include/nav_bar.php';
-	if(!(isset($_SESSION["role"])))
-	$_SESSION["role"]="";
 	?>
 		<!-- END NAVBAR -->
 		
@@ -48,21 +46,12 @@
 				if ($result->num_rows >= 1) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						if($_SESSION["role"]=="admin"){
-							$pid = $row["publication_id"];
+						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
-						}
-						else{
-							echo'<div class="publication ">';
-							echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
-							echo "<br>".$row["director"];
-							echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
-							echo "<br><b class='indexing'>".$row['website']."</b>";
-						}
 						echo'</div>';
 					}
 				} else {
@@ -80,20 +69,12 @@
 				if ($result->num_rows >= 1) {
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
-					}else{
-						echo'<div class="publication ">';
- 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
- 						echo "<br>".$row["director"];
- 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
- 						echo "<br><b class='indexing'>".$row['website']."</b>";
-					}
 						echo'</div>';
 					}
 				} else {
@@ -109,20 +90,12 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
-						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
-					}else{
-						echo'<div class="publication ">';
- 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
- 						echo "<br>".$row["director"];
- 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
- 						echo "<br><b class='indexing'>".$row['website']."</b>";
-					}
 						echo'</div>';
 					}
 				} else {
@@ -139,24 +112,15 @@
 				$result = $dbconn->query($sql);
 				if ($result->num_rows >= 1) {
 					while($row = $result->fetch_assoc()) {
-						if($_SESSION["role"]=="admin"){
 						$pid = $row["publication_id"];
 						echo'<div class="publication" >';
 						echo "<b><a id='".$pid."_link' class='editable' href='".$row["publication_link"]."' ".$edit." >".$row["publication_name"]."</a></b>" ;
 						echo "<br><div id='".$pid."_director' class='editable' ".$edit.">".$row["director"]."</div>";
 						echo "<i id='".$pid."_reference' class='gold editable' ".$edit." >".$row["reference"]."</i>,<i id='".$pid."_date' class='editable' ".$edit.">".$row["date"]."</i></b>";
 						echo "<br><b id='".$pid."_website' class='indexing editable' ".$edit." >".$row['website']."</b>";
-						}else{
-							echo'<div class="publication ">';
- 						echo "<b><a href='".$row["publication_link"]."'>".$row["publication_name"]."</a></b>" ;
- 						echo "<br>".$row["director"];
- 						echo "<br><i class='gold'>".$row["reference"]."</i>,".$row["date"]."</b>";
- 						echo "<br><b class='indexing'>".$row['website']."</b>";
-
-
-						}
 						echo'</div>';
 					}
+					echo '<p align="middle"><a href="publication_input.php" class="as-button"><span class="btn btn-primary">Add New Publiction</span></a></p>';
 				} else {
 					echo '<p class="error">SQL Query Error</p><br>';
 				}
@@ -206,6 +170,7 @@
 				xhttp.send(null);
 			});
 		}
+
 		function success(){
 		}
 	</script>
