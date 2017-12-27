@@ -76,24 +76,31 @@
 
 
 				<?php
+				$flag = true;
+				if ($flag){
+					$edit = 'contenteditable="true"';
+				} else {
+					$edit = '';
+				}
 		        $sql = "SELECT * FROM person";
 		        $result = $dbconn->query($sql);
 		        $count=0;
 		        if ($result->num_rows >= 1) {
 		          while($row = $result->fetch_assoc()) {
+		          	$pid = $row["person_id"];
 		          	echo '<div class="col-sm-4">';
 		          	echo '<div class="team-member">';
 		          	echo '<div class="member-info">';
-		          	echo '<h3 class="name"><a href="'.$row["person_website"].'">'.$row["person_name"].'</a></h3>';
-		          	echo '<span class="title">'.$row["person_level"].'</span>';
-		          	echo '<p class="short-bio keywords">'.$row["person_major"].'</p>';
+		          	echo '<h3 class="name"><a id="'.$pid.'-person_website" class="editable" href="'.$row["person_website"].'" '.$edit.'>'.$row["person_name"].'</a></h3>';
+		          	echo '<span id="'.$pid.'-person_level" class="title editable" '.$edit.'>'.$row["person_level"].'</span>';
+		          	echo '<p id="'.$pid.'-person_major" class="short-bio keywords editable" '.$edit.'>'.$row["person_major"].'</p>';
 		          	echo '<address class="contact-info">';
 		          	echo '<p class="sm">';
-		          	echo '<i class="icon icon_pin_alt ico-styled text-primary "></i>'.$row["person_location"].'</p>';
+		          	echo '<i id="'.$pid.'-person_location" class="icon icon_pin_alt ico-styled text-primary editable" '.$edit.'></i>'.$row["person_location"].'</p>';
 		          	echo '<p class="sm">';
-		          	echo '<i class="icon icon_phone ico-styled text-primary "></i>'.$row["person_phone"].'</p><p>';
+		          	echo '<i id="'.$pid.'-person_phone" class="icon icon_phone ico-styled text-primary editable" '.$edit.'></i>'.$row["person_phone"].'</p><p>';
 		          	echo '<i class="icon icon_mail_alt ico-styled text-primary"></i>';
-		          	echo '<a href="mailto:'.$row["person_email"].'">'.$row["person_email"].'</a></p></address>';
+		          	echo '<a id="'.$pid.'-person_email" class="editable" href="mailto:'.$row["person_email"].'" '.$edit.'>'.$row["person_email"].'</a></p></address>';
 		          	echo '<ul class="list-inline social-icons social-icons-small">';
 		          	echo '<li><a href="'.$row["social_facebook"].'" class="facebook-bg-hover"><i class="fa fa-facebook"></i> </a></li>';
 		          	echo '<li><a href="'.$row["social_website"].'" class="dribbble-bg-hover"><i class="fa fa-dribbble"></i> </a></li><li>';
@@ -146,6 +153,24 @@
 	<script src="theme/assets/js/bootstrap.min.js"></script>
 	<script src="theme/assets/js/plugins/easing/jquery.easing.min.js"></script>
 	<script src="theme/assets/js/bravana.js"></script>
+	<script type="text/javascript">
+		var editableList = document.getElementsByClassName("editable");
+		for (var i = 0; i < editableList.length; i++) {
+		    editableList[i].addEventListener('input', function() {
+		    	var id = this.getAttribute('id');
+		    	var content = this.textContent;
+
+		    	var xhttp = new XMLHttpRequest();
+				
+				xhttp.open("GET", "submitpeople.php?pid=" + id.split("-")[0] + "&field=" + id.split("-")[1] + "&content='" + content + "'", true);
+				xhttp.onreadystatechange = success;
+				xhttp.send(null);
+			});
+		}
+
+		function success(){
+		}
+	</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
